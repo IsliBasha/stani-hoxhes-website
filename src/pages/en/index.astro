@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/layout/Nav.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Hero from '../../components/sections/Hero.astro';
+import About from '../../components/sections/About.astro';
+import WhyChooseUs from '../../components/sections/WhyChooseUs.astro';
+import Rooms from '../../components/sections/Rooms.astro';
+import Gallery from '../../components/sections/Gallery.astro';
+import Experiences from '../../components/sections/Experiences.astro';
+import Kitchen from '../../components/sections/Kitchen.astro';
+import Location from '../../components/sections/Location.astro';
+import Contact from '../../components/sections/Contact.astro';
+
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'en' as const;
+const t = useTranslations(lang);
+---
+
+<Base
+  lang={lang}
+  title="Stani i Hoxhës — Novoseja Mountains, Kukës"
+  description="A seasonal mountain retreat in the Novoseja highlands, Kukës. Open 22 May — end of August. Traditional Albanian hospitality."
+>
+  <Nav t={t.nav} lang={lang} />
+  <main>
+    <Hero t={t.hero} />
+    <About t={t.about} />
+    <WhyChooseUs t={t.why} />
+    <Rooms t={t.rooms} lang={lang} />
+    <Gallery t={t.gallery} />
+    <Experiences t={t.experiences} />
+    <Kitchen t={t.kitchen} />
+    <Location t={t.location} />
+    <Contact t={t.contact} />
+  </main>
+  <Footer t={t.footer} />
+</Base>

@@ -1,0 +1,142 @@
+---
+import type { UI } from '../../i18n/ui';
+
+interface Props {
+  t: UI['footer'];
+}
+
+const { t } = Astro.props;
+---
+
+<footer class="footer">
+  <div class="footer__inner container">
+    <div class="footer__brand">
+      <p class="footer__wordmark">STANI I HOXHËS</p>
+      <p class="footer__tagline">{t.tagline}</p>
+      <address class="footer__contact" aria-label="Contact information">
+        <span>{t.address}</span>
+        <a href="tel:+355692404448">{t.phone}</a>
+        <a href="mailto:staniihoxhes@gmail.com">{t.email}</a>
+        <a href="https://instagram.com/staniihoxhes" target="_blank" rel="noopener noreferrer">{t.instagram}</a>
+      </address>
+      <p class="footer__copyright">{t.copyright}</p>
+    </div>
+
+    {t.columns.map((col) => (
+      <div class="footer__col">
+        <h3 class="footer__col-label">{col.label}</h3>
+        <ul class="footer__col-list" role="list">
+          {col.links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="footer__col-link"
+                {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              >
+                {link.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--green-deep);
+    color: var(--paper);
+    padding-block: var(--section-y);
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .footer__wordmark {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 300;
+    letter-spacing: 0.28em;
+    color: var(--gold-light);
+  }
+
+  .footer__tagline {
+    margin-top: 8px;
+    font-size: var(--text-sm);
+    font-style: italic;
+    color: rgba(255 255 255 / 0.55);
+    line-height: 1.5;
+  }
+
+  .footer__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 18px;
+    font-style: normal;
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.12em;
+    color: rgba(255 255 255 / 0.48);
+    text-transform: uppercase;
+  }
+
+  .footer__contact a {
+    text-decoration: none;
+    transition: color var(--dur-fast);
+  }
+
+  .footer__contact a:hover {
+    color: var(--gold-light);
+  }
+
+  .footer__copyright {
+    margin-top: 20px;
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.14em;
+    color: rgba(255 255 255 / 0.3);
+    text-transform: uppercase;
+  }
+
+  .footer__col-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255 255 255 / 0.38);
+    font-weight: 400;
+    margin-bottom: 18px;
+  }
+
+  .footer__col-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .footer__col-link {
+    font-size: var(--text-sm);
+    color: rgba(255 255 255 / 0.6);
+    text-decoration: none;
+    transition: color var(--dur-fast);
+    line-height: 1.4;
+  }
+
+  .footer__col-link:hover {
+    color: var(--gold-light);
+  }
+
+  @media (max-width: 640px) {
+    .footer__inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+</style>

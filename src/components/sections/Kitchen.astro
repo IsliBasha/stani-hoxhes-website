@@ -1,0 +1,142 @@
+---
+import type { UI } from '../../i18n/ui';
+
+interface Props {
+  t: UI['kitchen'];
+}
+
+const { t } = Astro.props;
+---
+
+<section class="kitchen" id="kuzhina" aria-labelledby="kitchen-title">
+  <div class="kitchen__inner container">
+
+    <div class="kitchen__head">
+      <span class="section-head__num">{t.num}</span>
+      <h2 class="kitchen__title" id="kitchen-title">{t.title}</h2>
+      <p class="kitchen__note">{t.note}</p>
+      <p class="kitchen__request">{t.request}</p>
+    </div>
+
+    <ul class="kitchen__list" role="list">
+      {t.dishes.map((dish) => (
+        <li class="kitchen__dish">
+          <div class="kitchen__dish-meta">
+            <span class="kitchen__dish-name">{dish.name}</span>
+            <span class="kitchen__dish-gloss">{dish.gloss}</span>
+          </div>
+          <span class="kitchen__dish-price">{dish.price}</span>
+        </li>
+      ))}
+    </ul>
+
+  </div>
+</section>
+
+<style>
+  .kitchen {
+    background: var(--green-deep);
+    color: var(--paper);
+    padding-block: var(--section-y);
+  }
+
+  .kitchen__inner {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    gap: clamp(2.5rem, 2rem + 4vw, 6rem);
+    align-items: start;
+  }
+
+  /* ── Left column ── */
+  .kitchen__title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 0.5rem + 4vw, 3.25rem);
+    font-weight: 300;
+    color: var(--paper);
+    margin-top: 14px;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  .kitchen__note {
+    margin-top: 20px;
+    font-size: var(--text-sm);
+    color: rgba(255 255 255 / 0.58);
+    line-height: 1.75;
+    max-width: 28ch;
+  }
+
+  .kitchen__request {
+    margin-top: 24px;
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255 255 255 / 0.3);
+  }
+
+  /* ── Right column (dish list) ── */
+  .kitchen__list {
+    list-style: none;
+    border-top: 1px solid oklch(62.1% 0.088 72 / 0.22);
+  }
+
+  .kitchen__dish {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-block: 22px;
+    border-bottom: 1px solid oklch(62.1% 0.088 72 / 0.22);
+  }
+
+  .kitchen__dish-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+  }
+
+  .kitchen__dish-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 0.4rem + 2vw, 2rem);
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .kitchen__dish-gloss {
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255 255 255 / 0.4);
+  }
+
+  .kitchen__dish-price {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    letter-spacing: 0.04em;
+    color: rgba(255 255 255 / 0.5);
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .kitchen__inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .kitchen__note {
+      max-width: 100%;
+    }
+
+    .kitchen__dish {
+      padding-block: 18px;
+    }
+  }
+</style>

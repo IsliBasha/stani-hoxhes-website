@@ -1,0 +1,273 @@
+---
+import type { UI } from '../../i18n/ui';
+
+interface Props {
+  t: UI['contact'];
+}
+
+const { t } = Astro.props;
+const f = t.form;
+---
+
+<section class="contact section" id="kontakt" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact__head" style="text-align: center;">
+      <span class="section-head__num">{t.num}</span>
+      <p class="section-head__label">{t.eyebrow}</p>
+      <h2 class="section-head__title" id="contact-title">{t.title}</h2>
+      <p class="section-head__sub" style="max-width: 44ch; margin-inline: auto; text-align: center;">
+        {t.subtitle}
+      </p>
+    </div>
+
+    <div class="contact__grid">
+      <!-- Contact details column -->
+      <div class="contact__details">
+        {t.details.map((item, i) => (
+          <div class="contact__row">
+            <div class="contact__row-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1"/>
+              </svg>
+            </div>
+            <div>
+              <p class="contact__row-label eyebrow">{item.label}</p>
+              {item.href ? (
+                <a
+                  href={item.href}
+                  class="contact__row-value"
+                  {...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  {item.value}
+                </a>
+              ) : (
+                <p class="contact__row-value">{item.value}</p>
+              )}
+              <p class="contact__row-note">{item.note}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Inquiry form column -->
+      <div class="contact__form-wrap">
+        <h3 class="contact__form-title">{f.heading}</h3>
+
+        <form id="contact-form" class="contact__form" novalidate>
+          <!-- Replace with your key from web3forms.com -->
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+          <input type="hidden" name="subject" value="Kërkesë — Stani i Hoxhës" />
+          <!-- Honeypot -->
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true" />
+
+          <div class="contact__fields">
+            <div class="contact__field">
+              <label class="contact__label eyebrow" for="cf-fn">{f.firstName} *</label>
+              <input id="cf-fn" name="first_name" type="text" class="contact__input" required autocomplete="given-name" />
+            </div>
+            <div class="contact__field">
+              <label class="contact__label eyebrow" for="cf-ln">{f.lastName}</label>
+              <input id="cf-ln" name="last_name" type="text" class="contact__input" autocomplete="family-name" />
+            </div>
+            <div class="contact__field contact__field--full">
+              <label class="contact__label eyebrow" for="cf-em">{f.email} *</label>
+              <input id="cf-em" name="email" type="email" class="contact__input" required autocomplete="email" />
+            </div>
+            <div class="contact__field">
+              <label class="contact__label eyebrow" for="cf-arr">{f.arrival}</label>
+              <input id="cf-arr" name="arrival" type="date" class="contact__input" />
+            </div>
+            <div class="contact__field">
+              <label class="contact__label eyebrow" for="cf-dep">{f.departure}</label>
+              <input id="cf-dep" name="departure" type="date" class="contact__input" />
+            </div>
+            <div class="contact__field contact__field--full">
+              <label class="contact__label eyebrow" for="cf-msg">{f.message}</label>
+              <textarea id="cf-msg" name="message" class="contact__input contact__textarea" rows="4"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="contact__submit btn" id="cf-btn">{f.submit}</button>
+          <div id="cf-status" class="contact__status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact { background: var(--paper); }
+
+  .contact__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: clamp(2rem, 1rem + 3vw, 3rem);
+    align-items: start;
+  }
+
+  /* Details */
+  .contact__details { display: flex; flex-direction: column; }
+
+  .contact__row {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 16px;
+    align-items: start;
+    padding-block: 18px;
+    border-top: 1px solid var(--line-2);
+  }
+
+  .contact__row:first-child { border-top: 1px solid var(--ink); }
+
+  .contact__row-icon { color: var(--gold); padding-top: 2px; }
+
+  .contact__row-label { color: var(--ink-3); margin-bottom: 4px; }
+
+  .contact__row-value {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--ink);
+    text-decoration: none;
+    line-height: 1.3;
+    display: block;
+    transition: color var(--dur-fast);
+  }
+
+  a.contact__row-value:hover { color: var(--gold-deep); }
+
+  .contact__row-note {
+    font-size: var(--text-xs);
+    color: var(--ink-3);
+    margin-top: 3px;
+  }
+
+  /* Form */
+  .contact__form-wrap {
+    background: var(--paper-2);
+    padding: 32px;
+  }
+
+  .contact__form-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+
+  .contact__fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .contact__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .contact__field--full { grid-column: 1 / -1; }
+
+  .contact__label { font-size: 9px; color: var(--ink-3); }
+
+  .contact__input {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 0;
+    padding: 10px 12px;
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    color: var(--ink);
+    outline: none;
+    width: 100%;
+    transition: border-color var(--dur-fast);
+  }
+
+  .contact__input:focus { border-color: var(--gold); }
+  .contact__input.is-invalid { border-color: oklch(45% 0.15 25); }
+
+  .contact__textarea { resize: vertical; min-height: 90px; }
+
+  .contact__submit { margin-top: 18px; width: 100%; }
+
+  .contact__status {
+    margin-top: 12px;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    min-height: 1.4em;
+  }
+
+  .contact__status.is-success { color: oklch(38% 0.12 145); }
+  .contact__status.is-error   { color: oklch(45% 0.15 25); }
+
+  @media (max-width: 640px) {
+    .contact__grid { grid-template-columns: 1fr; gap: 36px; }
+    .contact__form-wrap { padding: 24px; }
+    .contact__fields { grid-template-columns: 1fr; }
+    .contact__field--full { grid-column: auto; }
+  }
+</style>
+
+<script define:vars={{ successMsg: f.success, errorMsg: f.error, sendingMsg: f.sending, submitLabel: f.submit }}>
+  const form = /** @type {HTMLFormElement} */ (document.getElementById('contact-form'));
+  const btn  = /** @type {HTMLButtonElement} */ (document.getElementById('cf-btn'));
+  const stat = /** @type {HTMLElement} */ (document.getElementById('cf-status'));
+
+  if (form && btn && stat) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+
+      const valid = ['first_name', 'email'].every((k) => {
+        const v = data.get(k);
+        const el = form.querySelector(`[name="${k}"]`);
+        if (!v || !String(v).trim()) {
+          el?.classList.add('is-invalid');
+          return false;
+        }
+        return true;
+      });
+
+      if (!valid) return;
+
+      btn.disabled = true;
+      btn.textContent = sendingMsg;
+      stat.textContent = '';
+      stat.className = 'contact__status';
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: data,
+        });
+
+        if (res.ok) {
+          stat.textContent = successMsg;
+          stat.className = 'contact__status is-success';
+          form.reset();
+        } else {
+          throw new Error('server');
+        }
+      } catch {
+        stat.textContent = errorMsg;
+        stat.className = 'contact__status is-error';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = submitLabel;
+      }
+    });
+
+    form.querySelectorAll('[required]').forEach((el) => {
+      el.addEventListener('input', () => el.classList.remove('is-invalid'));
+    });
+  }
+</script>

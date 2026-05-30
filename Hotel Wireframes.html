@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Hotel / Resort detail page — wireframes</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+  html, body { margin: 0; padding: 0; background: #f0eee9; font-family: -apple-system, "Segoe UI", system-ui, sans-serif; }
+  .wf-hide-anno .wf-anno, .wf-hide-anno .wf-callout { display: none !important; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="wireframe-primitives.jsx"></script>
+<script type="text/babel" src="dir-a.jsx"></script>
+<script type="text/babel" src="dir-b.jsx"></script>
+<script type="text/babel" src="dir-c.jsx"></script>
+<script type="text/babel" src="dir-d.jsx"></script>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "device": "desktop",
+  "annotations": true,
+  "accent": "#b88a4f",
+  "showA": true,
+  "showB": false,
+  "showC": false,
+  "showD": true
+}/*EDITMODE-END*/;
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  // Apply accent color globally
+  React.useEffect(() => {
+    window.WF.accent = t.accent;
+    // Inject a small override that uses the accent
+    let s = document.getElementById('wf-accent-override');
+    if (!s) { s = document.createElement('style'); s.id = 'wf-accent-override'; document.head.appendChild(s); }
+    s.textContent = `.wf-anno{color:${t.accent} !important}.wf-anno-line{background:${t.accent} !important}`;
+  }, [t.accent]);
+
+  React.useEffect(() => {
+    document.body.classList.toggle('wf-hide-anno', !t.annotations);
+  }, [t.annotations]);
+
+  const showDesktop = t.device === 'both' || t.device === 'desktop';
+  const showMobile  = t.device === 'both' || t.device === 'mobile';
+
+  // For each section, only render artboards user has enabled and device chose
+  const renderSection = (id, title, sub, Cmp, flag) => {
+    if (!t[flag]) return null;
+    return (
+      <DCSection id={id} title={title} subtitle={sub}>
+        {showDesktop && (
+          <DCArtboard id={`${id}-d`} label="Desktop · 1200" width={1200} height={3600}>
+            <Cmp mobile={false} />
+          </DCArtboard>
+        )}
+        {showMobile && (
+          <DCArtboard id={`${id}-m`} label="Mobile · 360" width={360} height={3600}>
+            <Cmp mobile={true} />
+          </DCArtboard>
+        )}
+      </DCSection>
+    );
+  };
+
+  return (
+    <>
+      <DesignCanvas>
+        <DCSection id="cover" title="Stani i Hoxhës — detail page wireframes" subtitle="Direction A (Editorial). Desktop + mobile. Mountain retreat in the Novoseja highlands, Kukës — open 22 May – end of August, recurring.">
+          <DCArtboard id="brief" label="Brief" width={560} height={520}>
+            <div style={{ width: 560, height: 520, background: '#fff', border: `1px solid #cdcdcd`, padding: 36, fontFamily: '-apple-system, "Segoe UI", system-ui, sans-serif' }}>
+              <div style={{ fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 10, letterSpacing: '0.2em', color: '#6b6b6b' }}>BRIEF · DIRECTION A</div>
+              <div style={{ fontSize: 26, fontWeight: 500, letterSpacing: '-0.01em', marginTop: 14, lineHeight: 1.1 }}>
+                Stani i Hoxhës
+              </div>
+              <div style={{ fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11, color: '#3a6fb0', marginTop: 4, letterSpacing: '0.06em' }}>
+                Novoseja highlands · Kukës · Albania
+              </div>
+              <div style={{ fontSize: 13, color: '#444', marginTop: 16, lineHeight: 1.6, fontStyle: 'italic' }}>
+                A mountain retreat built by the Hoxha family in 2018 — twenty rooms in the main lodge plus four standalone cabins, opening only between snowmelt and harvest.
+              </div>
+              <div style={{ marginTop: 18, display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '8px 16px', fontSize: 12, color: '#222' }}>
+                <span style={{ color: '#6b6b6b', fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 10, letterSpacing: '0.16em' }}>SEASON</span><span>22 May — end of August (annually)</span>
+                <span style={{ color: '#6b6b6b', fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 10, letterSpacing: '0.16em' }}>FOUNDED</span><span>2018</span>
+                <span style={{ color: '#6b6b6b', fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 10, letterSpacing: '0.16em' }}>ROOMS</span><span>20 in main lodge + 4 standalone cabins</span>
+                <span style={{ color: '#6b6b6b', fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 10, letterSpacing: '0.16em' }}>LANGUAGES</span><span>Albanian (primary) · English</span>
+                <span style={{ color: '#6b6b6b', fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 10, letterSpacing: '0.16em' }}>OFFERS</span><span>Lake Novoseja, Path of Colors, flower meadow, picnic &amp; camping, traditional kitchen</span>
+              </div>
+              <div style={{ marginTop: 20, fontSize: 11, color: '#3a6fb0', fontFamily: '"Patrick Hand", "Comic Sans MS", cursive', letterSpacing: '0.04em', borderTop: '1px dashed #cdcdcd', paddingTop: 14 }}>
+                ↑ wireframe copy is bilingual (SQ primary, EN beneath).<br />
+                rates, distances and room inventory are still placeholders.
+              </div>
+            </div>
+          </DCArtboard>
+          <DCArtboard id="sections" label="Section index" width={420} height={520}>
+            <div style={{ width: 420, height: 520, background: '#111', color: '#fff', padding: 32, fontFamily: '-apple-system, "Segoe UI", system-ui, sans-serif' }}>
+              <div style={{ fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 10, letterSpacing: '0.2em', opacity: 0.5 }}>SECTIONS</div>
+              <div style={{ fontSize: 22, fontWeight: 500, marginTop: 14 }}>What the detail page covers.</div>
+              <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column' }}>
+                {[
+                  ['01', 'Hero + booking', 'Tagline, season badge, dates, building type'],
+                  ['02', 'Rreth nesh', 'About Us · 2018 · the mountain'],
+                  ['—', 'Pse të na zgjidhni', 'Why-choose-us band · quiet/host/tradition'],
+                  ['03', 'Qëndrimi', '20 rooms + 4 cabins'],
+                  ['04', 'Galeria', 'The lodge, the lake, the trail'],
+                  ['05', 'Eksperienca', 'Lake, Path of Colors, meadow, picnic'],
+                  ['06', 'Ndodhemi', 'Tirana → Kukës → Novoseja, on a map'],
+                  ['07', 'Kontakt', 'Real details + inquiry form'],
+                ].map((s) => (
+                  <div key={s[0]} style={{ display: 'grid', gridTemplateColumns: '32px 1fr', gap: 12, padding: '11px 0', borderBottom: '1px solid rgba(255,255,255,0.12)' }}>
+                    <div style={{ fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11, opacity: 0.5 }}>{s[0]}</div>
+                    <div>
+                      <div style={{ fontSize: 14, fontWeight: 500 }}>{s[1]}</div>
+                      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.55)', marginTop: 2 }}>{s[2]}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </DCArtboard>
+          <DCArtboard id="brand" label="Brand" width={420} height={520}>
+            <div style={{ width: 420, height: 520, background: '#fff', border: `1px solid #cdcdcd`, fontFamily: '-apple-system, "Segoe UI", system-ui, sans-serif', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ background: '#233429', padding: 28, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img src="assets/logo-stani.svg" alt="Stani i Hoxhës" style={{ width: '78%', height: 'auto', display: 'block' }} />
+              </div>
+              <div style={{ padding: 28, flex: 1 }}>
+                <div style={{ fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 10, letterSpacing: '0.2em', color: '#6b6b6b' }}>PALETTE · FROM LOGO</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 16 }}>
+                  {[
+                    ['#1a2b1f', 'Deep pine', 'footer, vignette'],
+                    ['#233429', 'Forest green', 'dark bands'],
+                    ['#334436', 'Moss', 'tints'],
+                    ['#9a7438', 'Gold (deep)', 'headings'],
+                    ['#b88a4f', 'Gold', 'accent'],
+                    ['#c8a063', 'Gold (light)', 'wordmark on green'],
+                  ].map((c) => (
+                    <div key={c[0]} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                      <div style={{ width: 36, height: 36, background: c[0], borderRadius: 3, border: '1px solid rgba(0,0,0,0.1)' }} />
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: 13, fontWeight: 500 }}>{c[1]}</div>
+                        <div style={{ fontSize: 11, color: '#6b6b6b' }}>{c[2]}</div>
+                      </div>
+                      <div style={{ fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11, color: '#6b6b6b' }}>{c[0]}</div>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ marginTop: 18, paddingTop: 14, borderTop: '1px dashed #cdcdcd', fontSize: 11, color: '#3a6fb0', fontFamily: '"Patrick Hand", "Comic Sans MS", cursive' }}>
+                  ↑ wireframe stays grey-box; brand colors land in the hi-fi build. Serif wordmark + gold-on-green is the signature.
+                </div>
+              </div>
+            </div>
+          </DCArtboard>
+        </DCSection>
+
+        {renderSection('dirA', 'A · Editorial Stay', 'Centred serif logotype, classic luxury linear stack. Generous whitespace, formal nav.', DirA, 'showA')}
+        {renderSection('dirB', 'B · Cinematic Story', 'Oversized italic display type, dark hero, horizontal-scroll rooms strip, dark-on-light alternation.', DirB, 'showB')}
+        {renderSection('dirC', 'C · Asymmetric Atelier', 'Vertical side-nav, multi-image collage hero, off-grid sections, expressive italic accents.', DirC, 'showC')}
+        {renderSection('dirD', 'D · Anchored', 'Location-first. Map preview anchored to hero, bento amenities, persistent booking widget, tabbed gallery.', DirD, 'showD')}
+      </DesignCanvas>
+
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="View">
+          <TweakRadio label="Device" value={t.device} options={['both', 'desktop', 'mobile']} onChange={(v) => setTweak('device', v)} />
+          <TweakToggle label="Annotations" value={t.annotations} onChange={(v) => setTweak('annotations', v)} />
+          <TweakColor label="Accent" value={t.accent} options={['#b88a4f', '#9a7438', '#233429', '#3a6fb0', '#b04a3a']} onChange={(v) => setTweak('accent', v)} />
+        </TweakSection>
+        <TweakSection label="Directions">
+          <TweakToggle label="A · Editorial" value={t.showA} onChange={(v) => setTweak('showA', v)} />
+          <TweakToggle label="B · Cinematic" value={t.showB} onChange={(v) => setTweak('showB', v)} />
+          <TweakToggle label="C · Atelier" value={t.showC} onChange={(v) => setTweak('showC', v)} />
+          <TweakToggle label="D · Anchored" value={t.showD} onChange={(v) => setTweak('showD', v)} />
+        </TweakSection>
+      </TweaksPanel>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/layout/Nav.astro';
+import Footer from '../../components/layout/Footer.astro';
+import { useTranslations } from '../../i18n/utils';
+
+export async function getStaticPaths() {
+  const rooms = await getCollection('rooms');
+  return rooms.map((room) => ({
+    params: { slug: room.slug },
+    props: { room },
+  }));
+}
+
+const { room } = Astro.props;
+const { data } = room;
+
+const lang = 'sq' as const;
+const t = useTranslations(lang);
+const tr = t.rooms;
+
+// Pre-compute to avoid TypeScript generics in JSX (angle brackets conflict with Astro template parser)
+const buildingLabels = tr.buildingLabels as Record<string, string>;
+const amenityLabels  = tr.amenityLabels  as Record<string, string>;
+const buildingLabel  = buildingLabels[data.building] ?? data.building;
+const amenityList    = data.amenities.map((k) => amenityLabels[k] ?? k);
+
+const { Content } = await room.render();
+---
+
+<Base
+  lang={lang}
+  title={`${data.name_sq} — Stani i Hoxhës`}
+  description={`${data.name_sq} · ${buildingLabel} · ${data.view_sq} · Stani i Hoxhës`}
+>
+  <Nav t={t.nav} lang={lang} />
+  <main>
+    <div class="rd__hero">
+      <img
+        src={data.hero}
+        alt={`${data.name_sq} · ${room.slug}`}
+        class="rd__hero-img"
+        width="1200"
+        height="800"
+        fetchpriority="high"
+        loading="eager"
+      />
+    </div>
+
+    <div class="rd__body container section">
+      <div class="rd__main">
+        <p class="eyebrow rd__building">
+          {buildingLabel.toUpperCase()} · {data.count} {tr.total}
+        </p>
+        <h1 class="rd__title">{data.name_sq}</h1>
+        <p class="rd__title-en">{data.name_en}</p>
+
+        <div class="rd__price">
+          {data.price_from_eur !== null ? (
+            <span class="rd__price-val">{tr.from} €{data.price_from_eur}</span>
+          ) : (
+            <>
+              <span class="rd__price-por">{tr.priceOnRequest}</span>
+              <a href="/#kontakt" class="rd__price-cta eyebrow">{tr.contactForPrices}</a>
+            </>
+          )}
+        </div>
+
+        <ul class="rd__chips" role="list">
+          <li class="chip">{data.max_guests} {tr.guests}</li>
+          {data.size_sqm !== null && <li class="chip">{data.size_sqm} {tr.sqm}</li>}
+          <li class="chip">{data.view_sq}</li>
+          {amenityList.map((label) => (
+            <li class="chip">{label}</li>
+          ))}
+        </ul>
+
+        <div class="rd__content">
+          <Content />
+        </div>
+
+        <a href="/#kontakt" class="btn rd__cta">KONTAKTO PËR REZERVIM</a>
+      </div>
+
+      <aside class="rd__sidebar">
+        <div class="rd__sidebar-card">
+          <p class="eyebrow" style="color:var(--gold); margin-bottom:8px;">STANI I HOXHËS</p>
+          <p class="rd__sidebar-tagline">{t.footer.tagline}</p>
+          <div class="rd__sidebar-contact">
+            <a href="tel:+355692404448">{t.footer.phone}</a>
+            <a href="mailto:staniihoxhes@gmail.com">staniihoxhes@gmail.com</a>
+          </div>
+        </div>
+        <a href="/#kontakt" class="btn btn--gold" style="width:100%; text-align:center;">REZERVO</a>
+        <a href="/" class="rd__back eyebrow">← TË GJITHA DHOMATË</a>
+      </aside>
+    </div>
+  </main>
+  <Footer t={t.footer} />
+</Base>
+
+<style>
+  .rd__hero {
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    min-height: 300px;
+    overflow: hidden;
+  }
+
+  .rd__hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .rd__body {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .rd__building { color: var(--ink-3); }
+
+  .rd__title {
+    font-family: var(--font-display);
+    font-size: var(--text-h1);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-top: 8px;
+  }
+
+  .rd__title-en {
+    font-size: var(--text-sm);
+    font-style: italic;
+    color: var(--ink-3);
+    margin-top: 4px;
+  }
+
+  .rd__price {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line-2);
+  }
+
+  .rd__price-val {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--gold-deep);
+  }
+
+  .rd__price-por {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--ink-3);
+  }
+
+  .rd__price-cta {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.14em;
+    transition: color var(--dur-fast);
+  }
+  .rd__price-cta:hover { color: var(--gold-deep); }
+
+  .rd__chips {
+    list-style: none;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .rd__content {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line-2);
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+
+  .rd__cta { margin-top: 28px; }
+
+  .rd__sidebar {
+    position: sticky;
+    top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .rd__sidebar-card {
+    border: 1px solid var(--line);
+    padding: 24px;
+  }
+
+  .rd__sidebar-tagline {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink-2);
+    line-height: 1.4;
+  }
+
+  .rd__sidebar-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line-2);
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.1em;
+  }
+
+  .rd__sidebar-contact a {
+    text-decoration: none;
+    color: var(--ink-2);
+    transition: color var(--dur-fast);
+  }
+  .rd__sidebar-contact a:hover { color: var(--gold); }
+
+  .rd__back {
+    text-decoration: none;
+    color: var(--ink-3);
+    letter-spacing: 0.14em;
+    transition: color var(--dur-fast);
+    text-align: center;
+    display: block;
+  }
+  .rd__back:hover { color: var(--ink); }
+
+  @media (max-width: 640px) {
+    .rd__body { grid-template-columns: 1fr; gap: 36px; }
+    .rd__sidebar { position: static; order: -1; }
+  }
+</style>

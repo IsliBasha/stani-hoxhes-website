@@ -1,0 +1,127 @@
+---
+import type { UI } from '../../i18n/ui';
+
+interface Props {
+  t: UI['about'];
+}
+
+const { t } = Astro.props;
+---
+
+<section class="about section" id="rreth" aria-labelledby="about-title">
+  <div class="about__inner container">
+    <div class="about__text">
+      <div class="section-head">
+        <span class="section-head__num">{t.num}</span>
+        <p class="section-head__label">{t.eyebrow}</p>
+        <h2 class="section-head__title" id="about-title">{t.title}</h2>
+        <p class="section-head__sub">{t.subtitle}</p>
+      </div>
+
+      <div class="about__body">
+        <p>{t.body}</p>
+        <p class="about__body-en">{t.bodyEn}</p>
+      </div>
+
+      <dl class="about__stats">
+        {t.stats.map((stat) => (
+          <div class="about__stat">
+            <dt class="about__stat-value">{stat.value}</dt>
+            <dd class="about__stat-label eyebrow">{stat.label}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+
+    <div class="about__image">
+      <img
+        src="/images/about-lifestyle.webp"
+        alt={t.imgLabel}
+        class="about__img"
+        width="900"
+        height="1350"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: var(--paper-2);
+  }
+
+  .about__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about__body {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-size: var(--text-base);
+    line-height: 1.72;
+    color: var(--ink-2);
+  }
+
+  .about__body-en {
+    font-style: italic;
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+  }
+
+  .about__stats {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+
+  .about__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .about__stat-value {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .about__stat-label {
+    color: var(--gold);
+  }
+
+  .about__image {
+    min-height: 440px;
+    align-self: stretch;
+    overflow: hidden;
+  }
+
+  .about__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    .about__inner {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .about__image {
+      min-height: 260px;
+    }
+  }
+</style>
