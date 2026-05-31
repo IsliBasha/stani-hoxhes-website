@@ -1,5 +1,10 @@
 ---
 import '../styles/global.css';
+import '@fontsource-variable/cormorant-garamond/wght.css';
+import '@fontsource-variable/cormorant-garamond/wght-italic.css';
+import '@fontsource-variable/source-sans-3/wght.css';
+import '@fontsource-variable/source-sans-3/wght-italic.css';
+import '@fontsource/dm-mono/400.css';
 
 interface Props {
   title?: string;
@@ -37,9 +42,6 @@ const ogImage = `${Astro.url.origin}/images/hero.webp`;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400&display=swap" />
   </head>
   <body>
     <slot />

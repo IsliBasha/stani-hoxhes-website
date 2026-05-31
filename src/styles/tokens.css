@@ -15,8 +15,8 @@
   --line-2:      oklch(90.0% 0.002 260);
 
   /* Typography */
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body:    'Source Sans 3', system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond Variable', Georgia, serif;
+  --font-body:    'Source Sans 3 Variable', system-ui, sans-serif;
   --font-mono:    'DM Mono', ui-monospace, 'Courier New', monospace;
 
   /* Type scale */

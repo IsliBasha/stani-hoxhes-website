@@ -8,6 +8,9 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@fontsource-variable/cormorant-garamond": "^5.2.6",
+    "@fontsource-variable/source-sans-3": "^5.2.9",
+    "@fontsource/dm-mono": "^5.2.7",
     "astro": "^4.16.0",
     "glightbox": "^3.3.1",
     "leaflet": "^1.9.4"
