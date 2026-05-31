@@ -96,6 +96,12 @@ Generated from `/impeccable critique` session on 2026-05-31.
 **Fix:** Add `<a href="#kontakt">` after the dish list in gold mono text. Add `cta` string to `sq.kitchen` and `en.kitchen` in `ui.ts`.
 **Effort:** Low
 
+### T-13 — Add nearby activities map (Leaflet.js)
+**Files:** `src/components/sections/Location.astro` (or new `src/components/sections/Activities.astro`), `src/i18n/ui.ts`
+**Problem:** No visual map of nearby activities exists. Guests have no way to discover hiking trails, Lake Novoseja, viewpoints, or nearby villages before making an inquiry.
+**Fix:** Add an interactive Leaflet.js map with custom gold/green SVG markers for activity pins (trails, lake, viewpoints, villages). Activity list lives in `ui.ts` for bilingual support. Either expand the existing Location section or add a new section between Experiences and Location. No API key required — uses OpenStreetMap tiles.
+**Effort:** Medium
+
 ### T-12 — Fill room detail page placeholder content
 **Files:** `src/content/rooms/dhoma-standarde.md`, `suita.md`, `kabina.md`
 **Problem:** All three room descriptions end with the literal string `(PLACEHOLDER)` in both languages. Visible on room detail pages.
@@ -120,3 +126,4 @@ Generated from `/impeccable critique` session on 2026-05-31.
 | T-10 Token fixes | Low | Low | Open |
 | T-11 Kitchen CTA | Low | Low | Open |
 | T-12 Room copy | Low | Low | Blocked |
+| T-13 Activities map | Low | Medium | Open |
