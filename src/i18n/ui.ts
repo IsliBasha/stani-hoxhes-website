@@ -79,6 +79,7 @@ const sq = {
     title: 'Mali, drita, qetësia.',
     subtitle: 'The mountain, the light, the quiet.',
     viewAll: 'SHIH GALERINË E PLOTË · 60+ FOTO →',
+    href: '/gallery',
     labels: [
       '01 · shtëpia',
       '02 · ahu novosej 1600 m',
@@ -89,6 +90,13 @@ const sq = {
       '07 · sofra tradicionale',
       '08 · piknik',
     ],
+  },
+  galleryPage: {
+    eyebrow: 'GALERIA E PLOTË',
+    title: 'Të gjitha pamjet.',
+    subtitle: 'Fotografi nga Stani i Hoxhës dhe malet e Novosejës.',
+    back: '← KTHEHU',
+    photoLabel: 'foto',
   },
   experiences: {
     num: '04',
@@ -298,6 +306,7 @@ const en = {
     title: 'The mountain, the light, the quiet.',
     subtitle: 'Mali, drita, qetësia.',
     viewAll: 'VIEW FULL GALLERY · 60+ PHOTOS →',
+    href: '/en/gallery',
     labels: [
       '01 · main lodge',
       '02 · ahu novosej 1600 m',
@@ -308,6 +317,13 @@ const en = {
       '07 · traditional table',
       '08 · picnic',
     ],
+  },
+  galleryPage: {
+    eyebrow: 'FULL GALLERY',
+    title: 'All photos.',
+    subtitle: 'Photography from Stani i Hoxhës and the Novoseja highlands.',
+    back: '← BACK',
+    photoLabel: 'photos',
   },
   experiences: {
     num: '04',

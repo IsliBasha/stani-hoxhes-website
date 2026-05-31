@@ -1,0 +1,153 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/layout/Nav.astro';
+import Footer from '../components/layout/Footer.astro';
+import { useTranslations } from '../i18n/utils';
+import 'glightbox/dist/css/glightbox.min.css';
+import fs from 'node:fs';
+import path from 'node:path';
+
+const lang = 'sq' as const;
+const t = useTranslations(lang);
+const tg = t.galleryPage;
+
+const fullDir = path.join(process.cwd(), 'public/images/gallery/full');
+let fullImages: string[] = [];
+try {
+  fullImages = fs.readdirSync(fullDir)
+    .filter(f => /\.(webp|jpg|jpeg|png)$/i.test(f))
+    .sort()
+    .map(f => `/images/gallery/full/${f}`);
+} catch { /* directory empty or missing */ }
+
+const gridPhotos = Array.from({ length: 8 }, (_, i) =>
+  `/images/gallery/${String(i + 1).padStart(2, '0')}.webp`
+);
+const photos = fullImages.length > 0 ? fullImages : gridPhotos;
+---
+
+<Base
+  lang={lang}
+  title="Galeria — Stani i Hoxhës"
+  description="Galeria e plotë e fotografive nga Stani i Hoxhës dhe malet e Novosejës, Kukës."
+>
+  <Nav t={t.nav} lang={lang} />
+
+  <main>
+    <header class="gp__header">
+      <div class="gp__header-inner container">
+        <a href="/" class="gp__back eyebrow">{tg.back}</a>
+        <div class="gp__title-block">
+          <p class="gp__eyebrow eyebrow">{tg.eyebrow}</p>
+          <h1 class="gp__title">{tg.title}</h1>
+          <p class="gp__count eyebrow">{photos.length} {tg.photoLabel}</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="gp__grid">
+      {photos.map((src, i) => (
+        <a
+          href={src}
+          class="gp__item glightbox"
+          data-gallery="full"
+          data-description={`${i + 1} / ${photos.length}`}
+          aria-label={`Foto ${i + 1}`}
+        >
+          <img
+            src={src}
+            alt={`Foto ${i + 1} — Stani i Hoxhës`}
+            class="gp__img"
+            loading={i < 12 ? 'eager' : 'lazy'}
+          />
+        </a>
+      ))}
+    </div>
+  </main>
+
+  <Footer t={t.footer} />
+</Base>
+
+<style>
+  .gp__header {
+    background: var(--green-deep);
+    padding-top: clamp(6rem, 14vh, 9rem);
+    padding-bottom: clamp(3rem, 6vh, 5rem);
+  }
+
+  .gp__header-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .gp__back {
+    align-self: flex-start;
+    color: rgba(255 255 255 / 0.35);
+    text-decoration: none;
+    letter-spacing: 0.14em;
+    transition: color var(--dur-fast);
+  }
+  .gp__back:hover { color: rgba(255 255 255 / 0.8); }
+
+  .gp__title-block { display: flex; flex-direction: column; gap: 10px; }
+
+  .gp__eyebrow {
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    display: block;
+  }
+
+  .gp__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--paper);
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .gp__count {
+    color: rgba(255 255 255 / 0.35);
+    letter-spacing: 0.14em;
+    display: block;
+  }
+
+  .gp__grid {
+    columns: 4;
+    column-gap: 6px;
+    padding: clamp(2rem, 4vw, 3rem) var(--section-x);
+    background: var(--paper-2);
+  }
+
+  .gp__item {
+    display: block;
+    break-inside: avoid;
+    margin-bottom: 6px;
+    overflow: hidden;
+  }
+
+  .gp__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .gp__item:hover .gp__img {
+    opacity: 0.88;
+    transform: scale(1.02);
+  }
+
+  @media (max-width: 1024px) { .gp__grid { columns: 3; } }
+
+  @media (max-width: 640px) {
+    .gp__grid { columns: 2; column-gap: 4px; }
+    .gp__item { margin-bottom: 4px; }
+  }
+</style>
+
+<script>
+  import GLightbox from 'glightbox';
+  GLightbox({ touchNavigation: true, loop: true, autoplayVideos: false });
+</script>

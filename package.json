@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "astro": "^4.16.0",
+    "glightbox": "^3.3.1",
     "leaflet": "^1.9.4"
   },
   "engines": {
