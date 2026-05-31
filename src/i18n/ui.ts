@@ -81,7 +81,7 @@ const sq = {
     viewAll: 'SHIH GALERINË E PLOTË · 60+ FOTO →',
     labels: [
       '01 · shtëpia',
-      '02 · kabina',
+      '02 · ahu novosej 1600 m',
       '03 · liqeni i novosejt',
       '04 · shtegu i ngjyrave',
       '05 · lulet e lëndinës',
@@ -300,7 +300,7 @@ const en = {
     viewAll: 'VIEW FULL GALLERY · 60+ PHOTOS →',
     labels: [
       '01 · main lodge',
-      '02 · cabin',
+      '02 · ahu novosej 1600 m',
       '03 · lake novoseja',
       '04 · path of colors',
       '05 · flower meadow',
