@@ -280,11 +280,20 @@ const total = photos.length;
   }
   .glightbox-clean .gnext:hover,
   .glightbox-clean .gprev:hover { background: rgba(255 255 255 / 0.06) !important; }
-  .glightbox-clean .gclose svg path { fill: rgba(255 255 255 / 0.55) !important; }
+  .glightbox-clean .gclose {
+    width: 44px !important;
+    height: 44px !important;
+    top: 10px !important;
+    right: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .glightbox-clean .gclose svg path { fill: rgba(255 255 255 / 0.65) !important; }
   .glightbox-clean .gclose:hover svg path { fill: rgba(255 255 255 / 1) !important; }
 </style>
 
 <script>
   import GLightbox from 'glightbox';
-  GLightbox({ touchNavigation: true, loop: true, autoplayVideos: false });
+  GLightbox({ touchNavigation: true, loop: true, autoplayVideos: false, closeEffect: 'none', openEffect: 'none' });
 </script>
