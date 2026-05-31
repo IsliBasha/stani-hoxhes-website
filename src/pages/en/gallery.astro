@@ -86,6 +86,7 @@ const total = photos.length;
             alt={`Photo ${i + 1} — Stani i Hoxhës`}
             class="gp__img"
             loading={i < 9 ? 'eager' : 'lazy'}
+            fetchpriority={i === 0 ? 'high' : undefined}
           />
           <span class="gp__idx" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
         </a>

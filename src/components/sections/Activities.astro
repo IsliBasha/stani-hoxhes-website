@@ -47,77 +47,75 @@ const localizedPins = t.pins.map((p) => ({
 </section>
 
 <script>
-  import L from 'leaflet';
   import 'leaflet/dist/leaflet.css';
 
   type Pin = { lat: number; lng: number; type: string; name: string };
 
   const container = document.getElementById('activities-map') as HTMLElement | null;
   if (container) {
-    const pins: Pin[] = JSON.parse(container.dataset.pins ?? '[]');
+    const observer = new IntersectionObserver(
+      async (entries) => {
+        if (!entries[0].isIntersecting) return;
+        observer.disconnect();
 
-    const map = L.map(container, {
-      zoomControl: true,
-      scrollWheelZoom: false,
-      attributionControl: true,
-      minZoom: 11,
-      maxZoom: 17,
-    });
+        const { default: L } = await import('leaflet');
+        const pins: Pin[] = JSON.parse(container.dataset.pins ?? '[]');
 
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-      attribution:
-        'Tiles &copy; Esri &mdash; Source: Esri, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGS, and the GIS User Community',
-      maxZoom: 19,
-    }).addTo(map);
-
-    const hotelIcon = L.divIcon({
-      html: `<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="15" cy="15" r="14" fill="white" fill-opacity="0.95" stroke="oklch(52.3% 0.096 72)" stroke-width="1.5"/>
-        <rect x="8" y="8" width="14" height="14" fill="oklch(52.3% 0.096 72)" transform="rotate(45 15 15)"/>
-      </svg>`,
-      className: 'map-icon',
-      iconSize: [30, 30],
-      iconAnchor: [15, 15],
-      popupAnchor: [0, -18],
-    });
-
-    const activityIcon = L.divIcon({
-      html: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="10" cy="10" r="9" fill="white" fill-opacity="0.95" stroke="oklch(21.5% 0.049 145)" stroke-width="1.5"/>
-        <circle cx="10" cy="10" r="5" fill="oklch(21.5% 0.049 145)"/>
-      </svg>`,
-      className: 'map-icon',
-      iconSize: [20, 20],
-      iconAnchor: [10, 10],
-      popupAnchor: [0, -12],
-    });
-
-    pins.forEach((pin) => {
-      const icon = pin.type === 'hotel' ? hotelIcon : activityIcon;
-      L.marker([pin.lat, pin.lng], { icon })
-        .addTo(map)
-        .bindPopup(`<span class="map-popup__label">${pin.name}</span>`, {
-          className: 'map-popup',
-          closeButton: false,
-          maxWidth: 200,
+        const map = L.map(container, {
+          zoomControl: true,
+          scrollWheelZoom: false,
+          attributionControl: true,
+          minZoom: 11,
+          maxZoom: 17,
         });
-    });
 
-    if (pins.length > 0) {
-      const bounds = L.latLngBounds(pins.map((p) => [p.lat, p.lng] as [number, number]));
-      map.fitBounds(bounds, { padding: [52, 52] });
-    }
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+          attribution:
+            'Tiles &copy; Esri &mdash; Source: Esri, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGS, and the GIS User Community',
+          maxZoom: 19,
+        }).addTo(map);
 
-    // Click anywhere on the map to reveal coordinates for pin placement
-    map.on('click', (e: L.LeafletMouseEvent) => {
-      const { lat, lng } = e.latlng;
-      L.popup({ className: 'map-popup', closeButton: true, maxWidth: 240 })
-        .setLatLng(e.latlng)
-        .setContent(
-          `<span class="map-popup__label">📍 ${lat.toFixed(6)}, ${lng.toFixed(6)}</span>`
-        )
-        .openOn(map);
-    });
+        const hotelIcon = L.divIcon({
+          html: `<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="15" cy="15" r="14" fill="white" fill-opacity="0.95" stroke="oklch(52.3% 0.096 72)" stroke-width="1.5"/>
+            <rect x="8" y="8" width="14" height="14" fill="oklch(52.3% 0.096 72)" transform="rotate(45 15 15)"/>
+          </svg>`,
+          className: 'map-icon',
+          iconSize: [30, 30],
+          iconAnchor: [15, 15],
+          popupAnchor: [0, -18],
+        });
+
+        const activityIcon = L.divIcon({
+          html: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="9" fill="white" fill-opacity="0.95" stroke="oklch(21.5% 0.049 145)" stroke-width="1.5"/>
+            <circle cx="10" cy="10" r="5" fill="oklch(21.5% 0.049 145)"/>
+          </svg>`,
+          className: 'map-icon',
+          iconSize: [20, 20],
+          iconAnchor: [10, 10],
+          popupAnchor: [0, -12],
+        });
+
+        pins.forEach((pin) => {
+          const icon = pin.type === 'hotel' ? hotelIcon : activityIcon;
+          L.marker([pin.lat, pin.lng], { icon })
+            .addTo(map)
+            .bindPopup(`<span class="map-popup__label">${pin.name}</span>`, {
+              className: 'map-popup',
+              closeButton: false,
+              maxWidth: 200,
+            });
+        });
+
+        if (pins.length > 0) {
+          const bounds = L.latLngBounds(pins.map((p) => [p.lat, p.lng] as [number, number]));
+          map.fitBounds(bounds, { padding: [52, 52] });
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(container);
   }
 </script>
 
