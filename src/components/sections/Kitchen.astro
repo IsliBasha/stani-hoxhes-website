@@ -30,6 +30,8 @@ const { t } = Astro.props;
       ))}
     </ul>
 
+    <a href="#kontakt" class="kitchen__cta eyebrow">{t.cta}</a>
+
   </div>
 </section>
 
@@ -123,6 +125,16 @@ const { t } = Astro.props;
     flex-shrink: 0;
     font-variant-numeric: tabular-nums;
   }
+
+  .kitchen__cta {
+    display: inline-block;
+    margin-top: 32px;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.16em;
+    transition: color var(--dur-fast);
+  }
+  .kitchen__cta:hover { color: var(--gold-light); }
 
   /* ── Mobile ── */
   @media (max-width: 640px) {

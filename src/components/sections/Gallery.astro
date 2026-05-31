@@ -43,9 +43,6 @@ const galleryImages = [
       ))}
     </div>
 
-    <div class="gallery__footer">
-      <span class="gallery__all eyebrow">{t.viewAll}</span>
-    </div>
   </div>
 </section>
 
@@ -81,17 +78,6 @@ const galleryImages = [
   /* Mosaic layout matching dir-a.jsx */
   .gallery__item--1 { grid-column: span 2; grid-row: span 2; }
   .gallery__item--6 { grid-column: span 2; }
-
-  .gallery__footer {
-    margin-top: 28px;
-    text-align: center;
-  }
-
-  .gallery__all {
-    color: var(--ink-3);
-    letter-spacing: 0.16em;
-    cursor: default;
-  }
 
   @media (max-width: 640px) {
     .gallery__grid {

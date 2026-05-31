@@ -12,6 +12,9 @@ const {
   description = 'Destinacion turistik sezonor në malet e Novosejës, Kukës. Hapur 22 maj — fund gushti.',
   lang = 'sq',
 } = Astro.props;
+
+const canonicalUrl = Astro.url.href;
+const ogImage = `${Astro.url.origin}/images/hero.webp`;
 ---
 <!doctype html>
 <html lang={lang} dir="ltr">
@@ -20,12 +23,23 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/assets/logo-stani.svg" />
+    <link rel="alternate" hreflang="x-default" href="/" />
     <link rel="alternate" hreflang="sq" href="/" />
     <link rel="alternate" hreflang="en" href="/en" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400&display=swap" />
   </head>
   <body>
     <slot />

@@ -7,11 +7,10 @@ export type Lang = keyof typeof languages;
 
 const sq = {
   nav: {
-    season: 'SEZONI 2026 · 22 MAJ — FUND GUSHTI',
     langSwitch: 'EN',
     langSwitchUrl: '/en',
-    links: ['SHTËPIA', 'DHOMA', 'KUZHINA', 'NATYRA'],
-    linkHrefs: ['/#rreth', '/#qendrimi', '/#kuzhina', '/#eksperienca'],
+    links: ['SHTËPIA', 'KUZHINA', 'NATYRA'],
+    linkHrefs: ['/#rreth', '/#kuzhina', '/#eksperienca'],
     right: ['GALERIA', 'NDODHEMI', 'KONTAKT', 'REZERVO'],
     rightHrefs: ['/#galeria', '/#ndodhemi', '/#kontakt', '/#kontakt'],
     wordmark: 'STANI I HOXHËS',
@@ -43,8 +42,8 @@ const sq = {
   },
   why: {
     eyebrow: 'PSE TË NA ZGJIDHNI · WHY CHOOSE US',
-    title: 'Aty ku qetësia e natyrës, ajri i pastër dhe shijet tradicionale krijojnë kujtime të paharrueshme.',
-    subtitle: 'Where the tranquility of nature, fresh mountain air and authentic traditional flavors create unforgettable memories.',
+    title: 'Pse Stani i Hoxhës.',
+    subtitle: 'Aty ku qetësia e natyrës, ajri i pastër dhe shijet tradicionale krijojnë kujtime të paharrueshme.',
     pillars: [
       { sq: 'Qetësi', en: 'Tranquility', desc: 'Larg zhurmës së qytetit, pranë natyrës.' },
       { sq: 'Mikpritje', en: 'Hospitality', desc: 'Pritja e ngrohtë shqiptare e familjes.' },
@@ -113,6 +112,7 @@ const sq = {
     title: 'Gatimet tona.',
     note: 'Bukë, djathë, mish. Gatime fshati të maleve. Çdo gjë gatuhet këtu, me duart tona.',
     request: 'Menuja e plotë sipas kërkesës.',
+    cta: 'REZERVO NJË TAVOLINË →',
     dishes: [
       { name: 'Mish Qingji', gloss: 'qengji · 1 kg', price: '2600 L' },
       { name: 'Patate Furre', gloss: 'patate të pjekura', price: '300 L' },
@@ -123,15 +123,38 @@ const sq = {
       { name: 'Fli', gloss: 'byrek tradicional me shtresa', price: '600 L' },
     ],
   },
+  activities: {
+    eyebrow: 'HARTA · RRETH NESH',
+    title: 'Rreth nesh.',
+    subtitle: 'Liqeni, shtegjet dhe panoramat — të gjitha brenda ecjes nga porta.',
+    legend: [
+      { type: 'hotel', label: 'HOTEL' },
+      { type: 'nature', label: 'NATYRË' },
+      { type: 'trail', label: 'SHTEGTIM' },
+      { type: 'view', label: 'PANORAMË' },
+    ],
+    pins: [
+      { lat: 41.9714504, lng: 20.5791311, type: 'hotel', sq: 'Stani i Hoxhës', en: 'Stani i Hoxhës' },
+      { lat: 41.948152, lng: 20.573189, type: 'nature', sq: 'Liqeni i Novosejt', en: 'Lake Novoseja' },
+      { lat: 41.914588, lng: 20.574135, type: 'trail', sq: 'Shtegu i Ngjyrave', en: 'Path of Colors' },
+      { lat: 41.975874, lng: 20.590613, type: 'nature', sq: 'Lugina Lulave', en: 'Lugina Lulave' },
+      { lat: 41.9898, lng: 20.5824, type: 'view', sq: 'Pamje Panoramike', en: 'Panoramic Views' },
+      { lat: 41.947264, lng: 20.585981, type: 'trail', sq: 'Piknik & Kamping', en: 'Picnic & Camping' },
+      { lat: 41.983061, lng: 20.587521, type: 'view', sq: 'Novosej', en: 'Novosej' },
+      { lat: 41.980062, lng: 20.605546, type: 'view', sq: 'Shishtavec', en: 'Shishtavec' },
+      { lat: 41.935754, lng: 20.567308, type: 'view', sq: 'Guri i Kulles', en: 'Guri i Kulles' },
+      { lat: 41.9448491914301, lng: 20.618561497575502, type: 'view', sq: 'Guri Mengjesit', en: 'Guri Mengjesit' },
+    ],
+  },
   location: {
     num: '06',
     eyebrow: 'NDODHEMI',
     title: 'Lart në malet e Novosejës.',
     subtitle: 'Above the town of Kukës, in the Novoseja highlands of northeastern Albania.',
     distances: [
-      { place: 'Tirana (TIA) · aeroport', dist: '~180 km · ~3h' },
-      { place: 'Kukës qytet', dist: '— km · ~30 min' },
-      { place: 'Liqeni i Novosejt', dist: '— km · në këmbë' },
+      { place: 'Tirana (TIA) · aeroport', dist: '153 km · ~2h' },
+      { place: 'Kukës qytet', dist: '27 km · ~40 min' },
+      { place: 'Novosej', dist: '4 km · ~8 min' },
       { place: 'Shtegu i Ngjyrave', dist: 'fillon te porta' },
     ],
     openInMaps: 'HAP NË GOOGLE MAPS →',
@@ -149,6 +172,9 @@ const sq = {
     ],
     form: {
       heading: 'Dërgo një kërkesë',
+      subject: 'Kërkesë: Stani i Hoxhës',
+      seasonStart: '2026-05-22',
+      seasonEnd: '2026-08-31',
       firstName: 'Emri',
       lastName: 'Mbiemri',
       email: 'Email',
@@ -200,11 +226,10 @@ const sq = {
 
 const en = {
   nav: {
-    season: 'SEASON 2026 · 22 MAY — END OF AUGUST',
     langSwitch: 'SQ',
     langSwitchUrl: '/',
-    links: ['HOME', 'ROOMS', 'KITCHEN', 'NATURE'],
-    linkHrefs: ['/en/#rreth', '/en/#qendrimi', '/en/#kuzhina', '/en/#eksperienca'],
+    links: ['HOME', 'KITCHEN', 'NATURE'],
+    linkHrefs: ['/en/#rreth', '/en/#kuzhina', '/en/#eksperienca'],
     right: ['GALLERY', 'LOCATION', 'CONTACT', 'RESERVE'],
     rightHrefs: ['/en/#galeria', '/en/#ndodhemi', '/en/#kontakt', '/en/#kontakt'],
     wordmark: 'STANI I HOXHËS',
@@ -236,8 +261,8 @@ const en = {
   },
   why: {
     eyebrow: 'WHY CHOOSE US',
-    title: 'Where the tranquility of nature, fresh mountain air and authentic traditional flavors create unforgettable memories.',
-    subtitle: 'Aty ku qetësia e natyrës, ajri i pastër dhe shijet tradicionale krijojnë kujtime të paharrueshme.',
+    title: 'Why Stani i Hoxhës.',
+    subtitle: 'Where the tranquility of nature, fresh mountain air and authentic traditional flavors create unforgettable memories.',
     pillars: [
       { sq: 'Qetësi', en: 'Tranquility', desc: 'Far from city noise, close to nature.' },
       { sq: 'Mikpritje', en: 'Hospitality', desc: 'The warm welcome of an Albanian family.' },
@@ -306,6 +331,7 @@ const en = {
     title: 'What we cook.',
     note: 'Bread, cheese, meat. Village cooking from the mountains. Everything made here, by hand.',
     request: 'Full menu available on request.',
+    cta: 'RESERVE A TABLE →',
     dishes: [
       { name: 'Mish Qingji', gloss: 'whole lamb · 1 kg', price: '2600 L' },
       { name: 'Patate Furre', gloss: 'wood-baked potatoes', price: '300 L' },
@@ -316,15 +342,38 @@ const en = {
       { name: 'Fli', gloss: 'layered crepe, traditional', price: '600 L' },
     ],
   },
+  activities: {
+    eyebrow: 'MAP · AROUND US',
+    title: 'Around us.',
+    subtitle: 'The lake, the trails, the viewpoints — all within walking distance from the gate.',
+    legend: [
+      { type: 'hotel', label: 'HOTEL' },
+      { type: 'nature', label: 'NATURE' },
+      { type: 'trail', label: 'HIKING' },
+      { type: 'view', label: 'VIEWPOINT' },
+    ],
+    pins: [
+      { lat: 41.9714504, lng: 20.5791311, type: 'hotel', sq: 'Stani i Hoxhës', en: 'Stani i Hoxhës' },
+      { lat: 41.948152, lng: 20.573189, type: 'nature', sq: 'Liqeni i Novosejt', en: 'Lake Novoseja' },
+      { lat: 41.914588, lng: 20.574135, type: 'trail', sq: 'Shtegu i Ngjyrave', en: 'Path of Colors' },
+      { lat: 41.975874, lng: 20.590613, type: 'nature', sq: 'Lugina Lulave', en: 'Lugina Lulave' },
+      { lat: 41.9898, lng: 20.5824, type: 'view', sq: 'Pamje Panoramike', en: 'Panoramic Views' },
+      { lat: 41.947264, lng: 20.585981, type: 'trail', sq: 'Piknik & Kamping', en: 'Picnic & Camping' },
+      { lat: 41.983061, lng: 20.587521, type: 'view', sq: 'Novosej', en: 'Novosej' },
+      { lat: 41.980062, lng: 20.605546, type: 'view', sq: 'Shishtavec', en: 'Shishtavec' },
+      { lat: 41.935754, lng: 20.567308, type: 'view', sq: 'Guri i Kulles', en: 'Guri i Kulles' },
+      { lat: 41.9448491914301, lng: 20.618561497575502, type: 'view', sq: 'Guri Mengjesit', en: 'Guri Mengjesit' },
+    ],
+  },
   location: {
     num: '06',
     eyebrow: 'LOCATION',
     title: 'High in the Novoseja mountains.',
     subtitle: 'Above the town of Kukës, in the highlands of northeastern Albania.',
     distances: [
-      { place: 'Tirana (TIA) · airport', dist: '~180 km · ~3h' },
-      { place: 'Kukës town', dist: '— km · ~30 min' },
-      { place: 'Lake Novoseja', dist: '— km · on foot' },
+      { place: 'Tirana (TIA) · airport', dist: '153 km · ~2h' },
+      { place: 'Kukës town', dist: '27 km · ~40 min' },
+      { place: 'Novosej', dist: '4 km · ~8 min' },
       { place: 'Path of Colors', dist: 'starts at the gate' },
     ],
     openInMaps: 'OPEN IN GOOGLE MAPS →',
@@ -342,6 +391,9 @@ const en = {
     ],
     form: {
       heading: 'Send an inquiry',
+      subject: 'Inquiry: Stani i Hoxhës',
+      seasonStart: '2026-05-22',
+      seasonEnd: '2026-08-31',
       firstName: 'First name',
       lastName: 'Last name',
       email: 'Email',

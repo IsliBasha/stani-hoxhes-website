@@ -7,6 +7,7 @@ interface Props {
 
 const { t } = Astro.props;
 const f = t.form;
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
 ---
 
 <section class="contact section" id="kontakt" aria-labelledby="contact-title">
@@ -53,9 +54,9 @@ const f = t.form;
       <div class="contact__form-wrap">
         <h3 class="contact__form-title">{f.heading}</h3>
 
-        <form id="contact-form" class="contact__form" novalidate>
-          <input type="hidden" name="access_key" value="c85f356a-4cb2-46b8-a35e-1a75f30b512e" />
-          <input type="hidden" name="subject" value="Kërkesë — Stani i Hoxhës" />
+        <form id="contact-form" class="contact__form" method="post" novalidate>
+          <input type="hidden" name="access_key" value={accessKey} />
+          <input type="hidden" name="subject" value={f.subject} />
           <!-- Honeypot -->
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true" />
 
@@ -74,11 +75,11 @@ const f = t.form;
             </div>
             <div class="contact__field">
               <label class="contact__label eyebrow" for="cf-arr">{f.arrival}</label>
-              <input id="cf-arr" name="arrival" type="date" class="contact__input" />
+              <input id="cf-arr" name="arrival" type="date" class="contact__input" min={f.seasonStart} max={f.seasonEnd} />
             </div>
             <div class="contact__field">
               <label class="contact__label eyebrow" for="cf-dep">{f.departure}</label>
-              <input id="cf-dep" name="departure" type="date" class="contact__input" />
+              <input id="cf-dep" name="departure" type="date" class="contact__input" min={f.seasonStart} max={f.seasonEnd} />
             </div>
             <div class="contact__field contact__field--full">
               <label class="contact__label eyebrow" for="cf-msg">{f.message}</label>
@@ -176,7 +177,7 @@ const f = t.form;
 
   .contact__field--full { grid-column: 1 / -1; }
 
-  .contact__label { font-size: 9px; color: var(--ink-3); }
+  .contact__label { font-size: var(--text-eyebrow); color: var(--ink-3); }
 
   .contact__input {
     background: var(--paper);

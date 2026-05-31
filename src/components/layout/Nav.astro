@@ -15,8 +15,7 @@ const { t } = Astro.props;
     <div class="nav__utility-inner container">
       <a href="tel:+355692404448" class="nav__util-item">+355 69 240 4448</a>
       <a href="mailto:staniihoxhes@gmail.com" class="nav__util-item">staniihoxhes@gmail.com</a>
-      <span class="nav__util-season">{t.season}</span>
-      <a href={t.langSwitchUrl} class="nav__util-lang" aria-label="Switch language">{t.langSwitch}</a>
+      <a href={t.langSwitchUrl} class="nav__util-lang nav__util-lang--push" aria-label="Switch language">{t.langSwitch}</a>
     </div>
   </div>
 
@@ -113,7 +112,7 @@ const { t } = Astro.props;
     color: rgba(255 255 255 / 0.55);
   }
 
-  .nav__util-season { flex: 1; text-align: center; text-transform: uppercase; }
+  .nav__util-lang--push { margin-left: auto; }
 
   .nav__util-item,
   .nav__util-lang {
@@ -281,6 +280,15 @@ const { t } = Astro.props;
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       menu.setAttribute('aria-hidden', String(!open));
+    });
+
+    menu.querySelectorAll<HTMLAnchorElement>('.nav__mobile-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+        menu.setAttribute('aria-hidden', 'true');
+      });
     });
   }
 </script>

@@ -7,12 +7,13 @@ interface Props {
 
 const { t } = Astro.props;
 
-const MAPS_EMBED = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14185.406462874298!2d20.579131120623117!3d41.971450449356546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1353d9d1972f9381%3A0x45ce9f7f749d8119!2sStani%20i%20Hoxh%C3%ABs!5e1!3m2!1sen!2s!4v1780151961771!5m2!1sen!2s';
 const MAPS_URL = 'https://www.google.com/maps?q=41.9714504,20.5791311';
+const COORDS = '41°58\'17″N · 20°34\'45″E';
 ---
 
 <section class="location section" id="ndodhemi" aria-labelledby="location-title">
   <div class="location__inner container">
+
     <div class="location__text">
       <div class="section-head">
         <span class="section-head__num">{t.num}</span>
@@ -20,6 +21,10 @@ const MAPS_URL = 'https://www.google.com/maps?q=41.9714504,20.5791311';
         <h2 class="section-head__title" id="location-title">{t.title}</h2>
         <p class="section-head__sub">{t.subtitle}</p>
       </div>
+    </div>
+
+    <div class="location__panel">
+      <p class="location__coords" aria-label="GPS coordinates">{COORDS}</p>
 
       <dl class="location__distances">
         {t.distances.map((d) => (
@@ -29,28 +34,17 @@ const MAPS_URL = 'https://www.google.com/maps?q=41.9714504,20.5791311';
           </div>
         ))}
       </dl>
-    </div>
 
-    <div class="location__map-wrap">
-      <iframe
-        class="location__map"
-        title="Stani i Hoxhës — Google Maps"
-        src={MAPS_EMBED}
-        width="100%"
-        height="440"
-        allowfullscreen
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
       <a
         href={MAPS_URL}
         target="_blank"
         rel="noopener noreferrer"
-        class="location__maps-link eyebrow"
+        class="location__cta eyebrow"
       >
         {t.openInMaps}
       </a>
     </div>
+
   </div>
 </section>
 
@@ -66,10 +60,26 @@ const MAPS_URL = 'https://www.google.com/maps?q=41.9714504,20.5791311';
     align-items: start;
   }
 
-  .location__distances {
-    margin-top: 32px;
+  /* ── Right panel ─────────────────────────────── */
+
+  .location__panel {
     display: flex;
     flex-direction: column;
+  }
+
+  .location__coords {
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 28px;
+  }
+
+  .location__distances {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--gold);
   }
 
   .location__row {
@@ -77,52 +87,37 @@ const MAPS_URL = 'https://www.google.com/maps?q=41.9714504,20.5791311';
     justify-content: space-between;
     align-items: baseline;
     gap: 16px;
-    padding-block: 12px;
-    border-bottom: 1px solid var(--line-2);
-  }
-
-  .location__row:first-child {
-    border-top: 1px solid var(--line);
+    padding-block: 18px;
+    border-bottom: 1px solid var(--line);
   }
 
   .location__place {
     font-size: var(--text-base);
     color: var(--ink);
+    font-weight: 400;
   }
 
   .location__dist {
     color: var(--ink-3);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     flex-shrink: 0;
   }
 
-  .location__map-wrap {
-    position: relative;
-  }
-
-  .location__map {
-    border: 1px solid var(--line);
+  .location__cta {
     display: block;
-    width: 100%;
-  }
-
-  .location__maps-link {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: var(--paper);
+    margin-top: 24px;
+    padding: 14px 20px;
     border: 1px solid var(--ink);
-    padding: 7px 14px;
-    font-size: var(--text-eyebrow);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    text-align: center;
     text-decoration: none;
     color: var(--ink);
-    white-space: nowrap;
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     transition: background var(--dur-fast), color var(--dur-fast);
   }
 
-  .location__maps-link:hover {
+  .location__cta:hover {
     background: var(--ink);
     color: var(--paper);
   }
@@ -131,10 +126,6 @@ const MAPS_URL = 'https://www.google.com/maps?q=41.9714504,20.5791311';
     .location__inner {
       grid-template-columns: 1fr;
       gap: 36px;
-    }
-
-    .location__map {
-      height: 280px;
     }
   }
 </style>

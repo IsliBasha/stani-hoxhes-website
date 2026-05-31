@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400&display=swap');
-
 @import './tokens.css';
 
 *, *::before, *::after {
@@ -93,12 +91,12 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 28px;
-  background: var(--ink);
+  padding: 14px 32px;
+  background: var(--green);
   color: var(--paper);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   text-decoration: none;
   border: none;
@@ -109,7 +107,7 @@ a {
 }
 
 .btn:hover {
-  background: var(--green);
+  background: var(--green-moss);
 }
 
 .btn--gold {
@@ -215,4 +213,11 @@ a {
 ::selection {
   background: var(--gold-deep);
   color: var(--paper);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
 }
