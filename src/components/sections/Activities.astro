@@ -86,10 +86,10 @@ const localizedPins = t.pins.map((p) => ({
           popupAnchor: [0, -18],
         });
 
-        const activityIcon = L.divIcon({
+        const natureIcon = L.divIcon({
           html: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="10" cy="10" r="9" fill="white" fill-opacity="0.95" stroke="oklch(21.5% 0.049 145)" stroke-width="1.5"/>
-            <circle cx="10" cy="10" r="5" fill="oklch(21.5% 0.049 145)"/>
+            <circle cx="10" cy="10" r="9" fill="white" fill-opacity="0.95" stroke="oklch(30% 0.07 145)" stroke-width="1.5"/>
+            <circle cx="10" cy="10" r="5" fill="oklch(30% 0.07 145)"/>
           </svg>`,
           className: 'map-icon',
           iconSize: [20, 20],
@@ -97,8 +97,33 @@ const localizedPins = t.pins.map((p) => ({
           popupAnchor: [0, -12],
         });
 
+        const panoramaIcon = L.divIcon({
+          html: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="9" fill="white" fill-opacity="0.95" stroke="oklch(58% 0.10 72)" stroke-width="1.5"/>
+            <circle cx="10" cy="10" r="5" fill="oklch(58% 0.10 72)"/>
+          </svg>`,
+          className: 'map-icon',
+          iconSize: [20, 20],
+          iconAnchor: [10, 10],
+          popupAnchor: [0, -12],
+        });
+
+        const villageIcon = L.divIcon({
+          html: `<svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="11,2 20.5,18.5 1.5,18.5" fill="white" fill-opacity="0.95" stroke="oklch(50% 0.07 42)" stroke-width="1.5"/>
+            <polygon points="11,6.5 17.5,16.5 4.5,16.5" fill="oklch(50% 0.07 42)"/>
+          </svg>`,
+          className: 'map-icon',
+          iconSize: [22, 20],
+          iconAnchor: [11, 10],
+          popupAnchor: [0, -12],
+        });
+
         pins.forEach((pin) => {
-          const icon = pin.type === 'hotel' ? hotelIcon : activityIcon;
+          let icon = natureIcon;
+          if (pin.type === 'hotel') icon = hotelIcon;
+          else if (pin.type === 'panorama') icon = panoramaIcon;
+          else if (pin.type === 'village') icon = villageIcon;
           L.marker([pin.lat, pin.lng], { icon })
             .addTo(map)
             .bindPopup(`<span class="map-popup__label">${pin.name}</span>`, {
@@ -177,9 +202,13 @@ const localizedPins = t.pins.map((p) => ({
     transform: rotate(45deg);
   }
 
-  .activities__dot--nature { background: var(--green); }
-  .activities__dot--trail  { background: var(--green-moss); }
-  .activities__dot--view   { background: var(--gold); }
+  .activities__dot--nature   { background: var(--green); }
+  .activities__dot--panorama { background: var(--gold); }
+  .activities__dot--village  {
+    background: oklch(50% 0.07 42);
+    border-radius: 0;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
 
   .activities__legend-label {
     color: var(--ink-3);

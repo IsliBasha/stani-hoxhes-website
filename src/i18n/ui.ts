@@ -138,20 +138,20 @@ const sq = {
     legend: [
       { type: 'hotel', label: 'HOTEL' },
       { type: 'nature', label: 'NATYRË' },
-      { type: 'trail', label: 'SHTEGTIM' },
-      { type: 'view', label: 'PANORAMË' },
+      { type: 'panorama', label: 'PANORAMË' },
+      { type: 'village', label: 'FSHAT' },
     ],
     pins: [
       { lat: 41.9714504, lng: 20.5791311, type: 'hotel', sq: 'Stani i Hoxhës', en: 'Stani i Hoxhës' },
       { lat: 41.948152, lng: 20.573189, type: 'nature', sq: 'Liqeni i Novosejt', en: 'Lake Novoseja' },
-      { lat: 41.914588, lng: 20.574135, type: 'trail', sq: 'Shtegu i Ngjyrave', en: 'Path of Colors' },
+      { lat: 41.914588, lng: 20.574135, type: 'nature', sq: 'Shtegu i Ngjyrave', en: 'Path of Colors' },
       { lat: 41.975874, lng: 20.590613, type: 'nature', sq: 'Lugina Luleve', en: 'Lugina Luleve' },
-      { lat: 41.9898, lng: 20.5824, type: 'view', sq: 'Pamje Panoramike', en: 'Panoramic Views' },
-      { lat: 41.947264, lng: 20.585981, type: 'trail', sq: 'Piknik & Kamping', en: 'Picnic & Camping' },
-      { lat: 41.983061, lng: 20.587521, type: 'view', sq: 'Novosej', en: 'Novosej' },
-      { lat: 41.980062, lng: 20.605546, type: 'view', sq: 'Shishtavec', en: 'Shishtavec' },
-      { lat: 41.935754, lng: 20.567308, type: 'view', sq: 'Guri i Kulles', en: 'Guri i Kulles' },
-      { lat: 41.9448491914301, lng: 20.618561497575502, type: 'view', sq: 'Guri Mengjesit', en: 'Guri Mengjesit' },
+      { lat: 41.9898, lng: 20.5824, type: 'panorama', sq: 'Guri si Qen', en: 'Guri si Qen' },
+      { lat: 41.947264, lng: 20.585981, type: 'nature', sq: 'Piknik & Kamping', en: 'Picnic & Camping' },
+      { lat: 41.983061, lng: 20.587521, type: 'village', sq: 'Novosej', en: 'Novosej' },
+      { lat: 41.980062, lng: 20.605546, type: 'village', sq: 'Shishtavec', en: 'Shishtavec' },
+      { lat: 41.935754, lng: 20.567308, type: 'panorama', sq: 'Guri Kullës', en: 'Guri Kullës' },
+      { lat: 41.9448491914301, lng: 20.618561497575502, type: 'panorama', sq: 'Guri Mengjesit', en: 'Guri Mengjesit' },
     ],
   },
   location: {
@@ -204,20 +204,12 @@ const sq = {
     instagram: '@STANIIHOXHES',
     columns: [
       {
-        label: 'QËNDRO',
-        links: [
-          { text: 'Dhoma Standarde', href: '/dhomat/dhoma-standarde' },
-          { text: 'Suita', href: '/dhomat/suita' },
-          { text: 'Kabinat', href: '/dhomat/kabina' },
-        ],
-      },
-      {
         label: 'NATYRA',
         links: [
           { text: 'Liqeni i Novosejt', href: '/#eksperienca' },
           { text: 'Shtegu i Ngjyrave', href: '/#eksperienca' },
           { text: 'Lëndina e Luleve', href: '/#eksperienca' },
-          { text: 'Pamje Panoramike', href: '/#eksperienca' },
+          { text: 'Guri si Qen', href: '/#eksperienca' },
         ],
       },
       {
@@ -363,22 +355,22 @@ const en = {
     title: 'Around us.',
     subtitle: 'The lake, the trails, the viewpoints — all within walking distance from the gate.',
     legend: [
-      { type: 'hotel', label: 'HOTEL' },
+      { type: 'hotel', label: 'LODGE' },
       { type: 'nature', label: 'NATURE' },
-      { type: 'trail', label: 'HIKING' },
-      { type: 'view', label: 'VIEWPOINT' },
+      { type: 'panorama', label: 'PANORAMIC' },
+      { type: 'village', label: 'VILLAGE' },
     ],
     pins: [
       { lat: 41.9714504, lng: 20.5791311, type: 'hotel', sq: 'Stani i Hoxhës', en: 'Stani i Hoxhës' },
       { lat: 41.948152, lng: 20.573189, type: 'nature', sq: 'Liqeni i Novosejt', en: 'Lake Novoseja' },
-      { lat: 41.914588, lng: 20.574135, type: 'trail', sq: 'Shtegu i Ngjyrave', en: 'Path of Colors' },
+      { lat: 41.914588, lng: 20.574135, type: 'nature', sq: 'Shtegu i Ngjyrave', en: 'Path of Colors' },
       { lat: 41.975874, lng: 20.590613, type: 'nature', sq: 'Lugina Luleve', en: 'Lugina Luleve' },
-      { lat: 41.9898, lng: 20.5824, type: 'view', sq: 'Pamje Panoramike', en: 'Panoramic Views' },
-      { lat: 41.947264, lng: 20.585981, type: 'trail', sq: 'Piknik & Kamping', en: 'Picnic & Camping' },
-      { lat: 41.983061, lng: 20.587521, type: 'view', sq: 'Novosej', en: 'Novosej' },
-      { lat: 41.980062, lng: 20.605546, type: 'view', sq: 'Shishtavec', en: 'Shishtavec' },
-      { lat: 41.935754, lng: 20.567308, type: 'view', sq: 'Guri i Kulles', en: 'Guri i Kulles' },
-      { lat: 41.9448491914301, lng: 20.618561497575502, type: 'view', sq: 'Guri Mengjesit', en: 'Guri Mengjesit' },
+      { lat: 41.9898, lng: 20.5824, type: 'panorama', sq: 'Guri si Qen', en: 'Guri si Qen' },
+      { lat: 41.947264, lng: 20.585981, type: 'nature', sq: 'Piknik & Kamping', en: 'Picnic & Camping' },
+      { lat: 41.983061, lng: 20.587521, type: 'village', sq: 'Novosej', en: 'Novosej' },
+      { lat: 41.980062, lng: 20.605546, type: 'village', sq: 'Shishtavec', en: 'Shishtavec' },
+      { lat: 41.935754, lng: 20.567308, type: 'panorama', sq: 'Guri Kullës', en: 'Guri Kullës' },
+      { lat: 41.9448491914301, lng: 20.618561497575502, type: 'panorama', sq: 'Guri Mengjesit', en: 'Guri Mengjesit' },
     ],
   },
   location: {
@@ -431,20 +423,12 @@ const en = {
     instagram: '@STANIIHOXHES',
     columns: [
       {
-        label: 'STAY',
-        links: [
-          { text: 'Standard Room', href: '/en/rooms/dhoma-standarde' },
-          { text: 'Suite', href: '/en/rooms/suita' },
-          { text: 'Cabins', href: '/en/rooms/kabina' },
-        ],
-      },
-      {
         label: 'NATURE',
         links: [
           { text: 'Lake Novoseja', href: '/en/#eksperienca' },
           { text: 'Path of Colors', href: '/en/#eksperienca' },
           { text: 'Flower Meadow', href: '/en/#eksperienca' },
-          { text: 'Panoramic Views', href: '/en/#eksperienca' },
+          { text: 'Guri si Qen', href: '/en/#eksperienca' },
         ],
       },
       {
