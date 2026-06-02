@@ -171,7 +171,7 @@ const sq = {
       { label: 'VENDNDODHJA', value: 'Novosejë, Kukës, Shqipëri', note: 'Pin nga Google Maps', href: undefined as string | undefined },
       { label: 'TELEFON', value: '+355 69 240 4448', note: 'Thirrje & WhatsApp', href: 'tel:+355692404448' },
       { label: 'EMAIL', value: 'staniihoxhes@gmail.com', note: '24h përgjigje në sezon', href: 'mailto:staniihoxhes@gmail.com' },
-      { label: 'INSTAGRAM', value: '@staniihoxhes', note: 'Shih galeria tona', href: 'https://instagram.com/staniihoxhes' },
+      { label: 'INSTAGRAM', value: '@staniihoxhes', note: 'Shiko galerinë tonë', href: 'https://instagram.com/staniihoxhes' },
     ],
     form: {
       heading: 'Dërgo një kërkesë',
