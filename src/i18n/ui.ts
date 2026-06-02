@@ -199,15 +199,6 @@ const sq = {
     instagram: '@STANIIHOXHES',
     columns: [
       {
-        label: 'NATYRA',
-        links: [
-          { text: 'Liqeni i Novosejt', href: '/#eksperienca' },
-          { text: 'Shtegu i Ngjyrave', href: '/#eksperienca' },
-          { text: 'Lëndina e Luleve', href: '/#eksperienca' },
-          { text: 'Guri si Qen', href: '/#eksperienca' },
-        ],
-      },
-      {
         label: 'KONTAKT',
         links: [
           { text: '+355 69 240 4448', href: 'tel:+355692404448' },
@@ -412,15 +403,6 @@ const en = {
     email: 'STANIIHOXHES@GMAIL.COM',
     instagram: '@STANIIHOXHES',
     columns: [
-      {
-        label: 'NATURE',
-        links: [
-          { text: 'Lake Novoseja', href: '/en/#eksperienca' },
-          { text: 'Path of Colors', href: '/en/#eksperienca' },
-          { text: 'Flower Meadow', href: '/en/#eksperienca' },
-          { text: 'Guri si Qen', href: '/en/#eksperienca' },
-        ],
-      },
       {
         label: 'CONTACT',
         links: [
