@@ -75,11 +75,11 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
             </div>
             <div class="contact__field">
               <label class="contact__label eyebrow" for="cf-arr">{f.arrival}</label>
-              <input id="cf-arr" name="arrival" type="date" class="contact__input" min={f.seasonStart} max={f.seasonEnd} />
+              <input id="cf-arr" name="arrival" type="text" class="contact__input" placeholder="DD MM YYYY" pattern="[0-9]{2} [0-9]{2} [0-9]{4}" inputmode="numeric" />
             </div>
             <div class="contact__field">
               <label class="contact__label eyebrow" for="cf-dep">{f.departure}</label>
-              <input id="cf-dep" name="departure" type="date" class="contact__input" min={f.seasonStart} max={f.seasonEnd} />
+              <input id="cf-dep" name="departure" type="text" class="contact__input" placeholder="DD MM YYYY" pattern="[0-9]{2} [0-9]{2} [0-9]{4}" inputmode="numeric" />
             </div>
             <div class="contact__field contact__field--full">
               <label class="contact__label eyebrow" for="cf-msg">{f.message}</label>
