@@ -192,7 +192,7 @@ const sq = {
   },
   footer: {
     tagline: 'Mes maleve, pranë qetësisë.',
-    copyright: '© 2026',
+    copyright: '© 2026 Stani i Hoxhës · All Rights Reserved',
     address: 'NOVOSEJË, KUKËS, AL',
     phone: '+355 69 240 4448',
     email: 'STANIIHOXHES@GMAIL.COM',
@@ -397,7 +397,7 @@ const en = {
   },
   footer: {
     tagline: 'Among the mountains, close to tranquility.',
-    copyright: '© 2026',
+    copyright: '© 2026 Stani i Hoxhës · All Rights Reserved',
     address: 'NOVOSEJË, KUKËS, AL',
     phone: '+355 69 240 4448',
     email: 'STANIIHOXHES@GMAIL.COM',
