@@ -43,6 +43,20 @@ try {
   }));
 }
 
+// Pair each landscape (span-2) with a portrait (span-1) so every desktop row
+// sums to exactly 3 columns. Remaining portraits fill solid rows at the end.
+function interleavePhotos(arr: PhotoEntry[]): PhotoEntry[] {
+  const L = arr.filter(p => p.kind === 'landscape');
+  const P = arr.filter(p => p.kind === 'portrait');
+  const result: PhotoEntry[] = [];
+  const pairs = Math.min(L.length, P.length);
+  for (let i = 0; i < pairs; i++) result.push(L[i], P[i]);
+  for (let i = pairs; i < L.length; i++) result.push(L[i]);
+  for (let i = pairs; i < P.length; i++) result.push(P[i]);
+  return result;
+}
+photos = interleavePhotos(photos);
+
 const total = photos.length;
 ---
 

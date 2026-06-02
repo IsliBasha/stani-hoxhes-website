@@ -9,7 +9,7 @@ const sq = {
   nav: {
     langSwitch: 'EN',
     langSwitchUrl: '/en',
-    links: ['SHTËPIA', 'KUZHINA', 'NATYRA'],
+    links: ['RRETH NESH', 'KUZHINA', 'NATYRA'],
     linkHrefs: ['/#rreth', '/#kuzhina', '/#eksperienca'],
     right: ['GALERIA', 'NDODHEMI', 'KONTAKT', 'REZERVO'],
     rightHrefs: ['/#galeria', '/#ndodhemi', '/#kontakt', '/#kontakt'],
@@ -33,11 +33,6 @@ const sq = {
     subtitle: 'Traditional hospitality, deep in the Novoseja mountains.',
     body: 'Stani i Hoxhës është një destinacion turistik në zemër të maleve të Novosejës, i krijuar për të ofruar qetësi, mikpritje tradicionale dhe një eksperiencë autentike shqiptare. I rrethuar nga natyra, ajri i pastër dhe pamjet mahnitëse malore — ideal për familje, çifte dhe çdo vizitor që kërkon të largohet nga zhurma e qytetit.',
     bodyEn: 'A unique mountain retreat in the heart of the Novosejë mountains — peace, traditional hospitality and an authentic Albanian experience, perfect for families, couples and anyone escaping the noise of the city.',
-    stats: [
-      { value: '20 + 4', label: 'DHOMA · KABINA' },
-      { value: '2018', label: 'I HAPUR' },
-      { value: '3 mu.', label: 'SEZON I VERËS' },
-    ],
     imgLabel: 'lifestyle · familja, shtëpia, mëngjesi i parë',
   },
   why: {
@@ -228,7 +223,7 @@ const en = {
   nav: {
     langSwitch: 'SQ',
     langSwitchUrl: '/',
-    links: ['HOME', 'KITCHEN', 'NATURE'],
+    links: ['ABOUT US', 'KITCHEN', 'NATURE'],
     linkHrefs: ['/en/#rreth', '/en/#kuzhina', '/en/#eksperienca'],
     right: ['GALLERY', 'LOCATION', 'CONTACT', 'RESERVE'],
     rightHrefs: ['/en/#galeria', '/en/#ndodhemi', '/en/#kontakt', '/en/#kontakt'],
@@ -252,11 +247,6 @@ const en = {
     subtitle: 'Mikpritje tradicionale, mes maleve të Novosejës.',
     body: 'Stani i Hoxhës is a unique mountain retreat located in the heart of the Novosejë mountains in Kukës, created to offer peace, traditional hospitality, and an authentic Albanian experience. Surrounded by breathtaking mountain views, fresh air, and untouched nature — perfect for families, couples and anyone escaping the noise of the city.',
     bodyEn: 'Stani i Hoxhës është një destinacion turistik në zemër të maleve të Novosejës.',
-    stats: [
-      { value: '20 + 4', label: 'ROOMS · CABINS' },
-      { value: '2018', label: 'OPENED' },
-      { value: '3 mo.', label: 'SUMMER SEASON' },
-    ],
     imgLabel: 'lifestyle · family, main lodge, breakfast',
   },
   why: {
