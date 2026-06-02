@@ -192,7 +192,7 @@ const sq = {
   },
   footer: {
     tagline: 'Mes maleve, pranë qetësisë.',
-    copyright: '© 2026 · SEZONI 22 MAJ — FUND GUSHTI',
+    copyright: '© 2026',
     address: 'NOVOSEJË, KUKËS, AL',
     phone: '+355 69 240 4448',
     email: 'STANIIHOXHES@GMAIL.COM',
@@ -397,7 +397,7 @@ const en = {
   },
   footer: {
     tagline: 'Among the mountains, close to tranquility.',
-    copyright: '© 2026 · SEASON 22 MAY — END OF AUGUST',
+    copyright: '© 2026',
     address: 'NOVOSEJË, KUKËS, AL',
     phone: '+355 69 240 4448',
     email: 'STANIIHOXHES@GMAIL.COM',
