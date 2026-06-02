@@ -106,7 +106,7 @@ const sq = {
       { sq: 'Piknik & Kamping', en: 'Picnic & Camping', desc: 'Sofër në natyrë ose një natë nën yjet.' },
       { sq: 'Qetësi e Plotë', en: 'Total Quiet', desc: 'Shkëputje nga rutina, larg sinjalit.' },
       { sq: 'Kuzhinë Tradicionale', en: 'Traditional Kitchen', desc: 'Bukë, djathë, mish në hell — gatime familjare.' },
-      { sq: 'Mikpritje', en: 'Hospitality', desc: 'Familja Hoxha, pritja shqiptare.' },
+      { sq: 'Mikpritje', en: 'Hospitality', desc: 'Familja Basha, pritja shqiptare.' },
     ],
   },
   kitchen: {
@@ -320,7 +320,7 @@ const en = {
       { sq: 'Piknik & Kamping', en: 'Picnic & Camping', desc: 'A table in nature, or a night under the stars.' },
       { sq: 'Qetësi e Plotë', en: 'Total Quiet', desc: 'A break from routine, away from the signal.' },
       { sq: 'Kuzhinë Tradicionale', en: 'Traditional Kitchen', desc: 'Bread, cheese, spit-roast — home cooking.' },
-      { sq: 'Mikpritje', en: 'Hospitality', desc: 'The Hoxha family, Albanian welcome.' },
+      { sq: 'Mikpritje', en: 'Hospitality', desc: 'The Basha family, Albanian welcome.' },
     ],
   },
   kitchen: {
