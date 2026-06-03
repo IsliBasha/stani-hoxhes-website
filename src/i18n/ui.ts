@@ -105,8 +105,8 @@ const sq = {
       { sq: 'Pamje Panoramike', en: 'Panoramic Views', desc: 'Maja dhe lugina, deri tej, mes maleve.' },
       { sq: 'Piknik & Kamping', en: 'Picnic & Camping', desc: 'Sofër në natyrë ose një natë nën yjet.' },
       { sq: 'Qetësi e Plotë', en: 'Total Quiet', desc: 'Shkëputje nga rutina, larg sinjalit.' },
-      { sq: 'Kuzhinë Tradicionale', en: 'Traditional Kitchen', desc: 'Bukë, djathë, mish në hell — gatime familjare.' },
-      { sq: 'Mikpritje', en: 'Hospitality', desc: 'Familja Basha, pritja shqiptare.' },
+      { sq: 'Kuzhinë Tradicionale', en: 'Traditional Kitchen', desc: 'Bukë, djathë, mish në furrë — gatime familjare.' },
+      { sq: 'Mikpritje', en: 'Hospitality', desc: 'Tradita e mikpritjes shqiptare.' },
     ],
   },
   kitchen: {
