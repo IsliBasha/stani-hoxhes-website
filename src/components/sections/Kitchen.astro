@@ -80,7 +80,7 @@ const { t } = Astro.props;
   /* ── Right column (dish list) ── */
   .kitchen__list {
     list-style: none;
-    border-top: 1px solid oklch(62.1% 0.088 72 / 0.22);
+    border-top: 1px solid color-mix(in oklch, var(--gold) 22%, transparent);
   }
 
   .kitchen__dish {
@@ -89,7 +89,7 @@ const { t } = Astro.props;
     justify-content: space-between;
     gap: 1.5rem;
     padding-block: 22px;
-    border-bottom: 1px solid oklch(62.1% 0.088 72 / 0.22);
+    border-bottom: 1px solid color-mix(in oklch, var(--gold) 22%, transparent);
   }
 
   .kitchen__dish-meta {

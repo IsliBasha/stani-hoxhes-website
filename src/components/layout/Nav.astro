@@ -27,7 +27,7 @@ const { t } = Astro.props;
       ))}
     </nav>
 
-    <a href="/" class="nav__wordmark" aria-label="Stani i Hoxhës home">
+    <a href={lang === 'en' ? '/en/' : '/'} class="nav__wordmark" aria-label="Stani i Hoxhës home">
       {t.wordmark}
     </a>
 
@@ -48,7 +48,7 @@ const { t } = Astro.props;
     <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile-menu">
       <span class="nav__burger" aria-hidden="true"></span>
     </button>
-    <a href="/" class="nav__wordmark nav__wordmark--mobile">{t.wordmark}</a>
+    <a href={lang === 'en' ? '/en/' : '/'} class="nav__wordmark nav__wordmark--mobile">{t.wordmark}</a>
     <a href={t.langSwitchUrl} class="nav__util-lang">{t.langSwitch}</a>
   </div>
 

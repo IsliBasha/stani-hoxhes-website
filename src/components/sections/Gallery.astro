@@ -10,7 +10,7 @@ const { t } = Astro.props;
 
 const galleryImages = [
   { src: '/images/gallery/01.webp', w: 1200, h: 801  },
-  { src: '/images/gallery/full/012.webp', w: 1200, h: 1800 },
+  { src: '/images/gallery/02.webp', w: 1200, h: 1800 },
   { src: '/images/gallery/03.webp', w: 801,  h: 1200 },
   { src: '/images/gallery/04.webp', w: 800,  h: 1200 },
   { src: '/images/gallery/05.webp', w: 801,  h: 1200 },
@@ -22,11 +22,11 @@ const galleryImages = [
 
 <section class="gallery section" id="galeria" aria-labelledby="gallery-title">
   <div class="container">
-    <div class="gallery__head section-head" style="align-items: center; text-align: center;">
+    <div class="gallery__head section-head">
       <span class="section-head__num">{t.num}</span>
       <p class="section-head__label">{t.eyebrow}</p>
       <h2 class="section-head__title" id="gallery-title">{t.title}</h2>
-      <p class="section-head__sub" style="text-align: center; max-width: 36ch; margin-inline: auto;">{t.subtitle}</p>
+      <p class="section-head__sub">{t.subtitle}</p>
     </div>
 
     <div class="gallery__grid" role="list" aria-label="Photo gallery">
@@ -60,7 +60,18 @@ const galleryImages = [
 <style>
   .gallery { background: var(--paper-2); }
 
-  .gallery__head { display: flex; flex-direction: column; }
+  .gallery__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .gallery__head .section-head__sub {
+    text-align: center;
+    max-width: 36ch;
+    margin-inline: auto;
+  }
 
   .gallery__grid {
     display: grid;

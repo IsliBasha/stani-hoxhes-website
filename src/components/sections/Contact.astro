@@ -12,13 +12,11 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
 
 <section class="contact section" id="kontakt" aria-labelledby="contact-title">
   <div class="container">
-    <div class="contact__head" style="text-align: center;">
+    <div class="contact__head">
       <span class="section-head__num">{t.num}</span>
       <p class="section-head__label">{t.eyebrow}</p>
       <h2 class="section-head__title" id="contact-title">{t.title}</h2>
-      <p class="section-head__sub" style="max-width: 44ch; margin-inline: auto; text-align: center;">
-        {t.subtitle}
-      </p>
+      <p class="section-head__sub">{t.subtitle}</p>
     </div>
 
     <div class="contact__grid">
@@ -102,6 +100,13 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+  }
+
+  .contact__head .section-head__sub {
+    max-width: 44ch;
+    margin-inline: auto;
+    text-align: center;
   }
 
   .contact__grid {
