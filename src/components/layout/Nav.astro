@@ -6,7 +6,7 @@ interface Props {
   lang: Lang;
 }
 
-const { t } = Astro.props;
+const { t, lang = 'sq' } = Astro.props;
 ---
 
 <header class="nav" id="nav">
