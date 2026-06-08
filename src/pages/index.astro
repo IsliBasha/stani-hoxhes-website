@@ -22,6 +22,38 @@ const t = useTranslations(lang);
   lang={lang}
   title="Stani i Hoxhës — Malet e Novosejës, Kukës"
   description="Destinacion turistik sezonor në malet e Novosejës, Kukës. Hapur 22 maj — fund gushti. Mikpritje tradicionale shqiptare."
+  sqPath="/"
+  enPath="/en"
+  jsonLd={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": ["LodgingBusiness", "TouristAttraction"],
+    "name": "Stani i Hoxhës",
+    "description": "Destinacion turistik sezonor në malet e Novosejës, Kukës. Mikpritje tradicionale shqiptare, hapur 22 maj deri fund gushti.",
+    "url": "https://stanihoxhes.com",
+    "telephone": "+355692404448",
+    "email": "staniihoxhes@gmail.com",
+    "image": "https://stanihoxhes.com/images/hero.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Novosejë",
+      "addressLocality": "Kukës",
+      "addressCountry": "AL"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 41.9714504,
+      "longitude": 20.5791311
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59",
+      "validFrom": "--05-22",
+      "validThrough": "--08-31"
+    },
+    "sameAs": ["https://www.instagram.com/staniihoxhes"]
+  })}
 >
   <Nav t={t.nav} lang={lang} />
   <main>

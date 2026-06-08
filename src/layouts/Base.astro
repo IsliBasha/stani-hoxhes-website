@@ -10,16 +10,25 @@ interface Props {
   title?: string;
   description?: string;
   lang?: 'sq' | 'en';
+  sqPath?: string;
+  enPath?: string;
+  jsonLd?: string;
 }
 
 const {
   title = 'Stani i Hoxhës — Malet e Novosejës',
   description = 'Destinacion turistik sezonor në malet e Novosejës, Kukës. Hapur 22 maj — fund gushti.',
   lang = 'sq',
+  sqPath = '/',
+  enPath = '/en',
+  jsonLd,
 } = Astro.props;
 
+const origin = Astro.url.origin;
 const canonicalUrl = Astro.url.href;
-const ogImage = `${Astro.url.origin}/images/hero.webp`;
+const ogImage = `${origin}/images/hero.webp`;
+const ogLocale = lang === 'sq' ? 'sq_AL' : 'en_US';
+const ogLocaleAlt = lang === 'sq' ? 'en_US' : 'sq_AL';
 ---
 <!doctype html>
 <html lang={lang} dir="ltr">
@@ -30,18 +39,21 @@ const ogImage = `${Astro.url.origin}/images/hero.webp`;
     <title>{title}</title>
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/assets/logo-stani.svg" />
-    <link rel="alternate" hreflang="x-default" href="/" />
-    <link rel="alternate" hreflang="sq" href="/" />
-    <link rel="alternate" hreflang="en" href="/en" />
+    <link rel="alternate" hreflang="x-default" href={`${origin}${sqPath}`} />
+    <link rel="alternate" hreflang="sq" href={`${origin}${sqPath}`} />
+    <link rel="alternate" hreflang="en" href={`${origin}${enPath}`} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogLocaleAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
   </head>
   <body>
     <slot />
