@@ -114,16 +114,16 @@ Generated from `/impeccable critique` session on 2026-05-31.
 
 | Ticket | Priority | Effort | Status |
 |--------|----------|--------|--------|
-| T-01 Room photos | P0 | Low | Open |
-| T-02 Gallery CTA | P1 | Low/Medium | Open |
-| T-03 `.btn` styles | P1 | Low | Open |
-| T-04 Reduced motion | P2 | Low | Open |
-| T-05 SEO metadata | P2 | Low | Open |
-| T-06 Why heading | P2 | Low | Open |
-| T-07 Mobile nav close | P3 | Low | Open |
-| T-08 Form fixes | P3 | Low | Open |
-| T-09 Fonts | Low | Low | Open |
-| T-10 Token fixes | Low | Low | Open |
-| T-11 Kitchen CTA | Low | Low | Open |
-| T-12 Room copy | Low | Low | Blocked |
-| T-13 Activities map | Low | Medium | Open |
+| T-01 Room photos | P0 | Low | Done |
+| T-02 Gallery CTA | P1 | Low/Medium | Done |
+| T-03 `.btn` styles | P1 | Low | Done |
+| T-04 Reduced motion | P2 | Low | Done |
+| T-05 SEO metadata | P2 | Low | Done |
+| T-06 Why heading | P2 | Low | Done |
+| T-07 Mobile nav close | P3 | Low | Done |
+| T-08 Form fixes | P3 | Low | Done |
+| T-09 Fonts | Low | Low | Done |
+| T-10 Token fixes | Low | Low | Done |
+| T-11 Kitchen CTA | Low | Low | Done |
+| T-12 Room copy | Low | Low | Done |
+| T-13 Activities map | Low | Medium | Done |

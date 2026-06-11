@@ -62,10 +62,18 @@ const total = photos.length;
 
 <Base
   lang={lang}
-  title="Gallery — Stani i Hoxhës"
-  description="Full photo gallery from Stani i Hoxhës and the Novoseja highlands, Kukës."
+  title="Photo Gallery — Novoseja Highlands, Kukës | Stani i Hoxhës"
+  description="Browse the full photo collection from Stani i Hoxhës — mountain forests, wooden cabins, Novoseja highland scenery, and traditional Albanian cuisine."
   sqPath="/gallery"
   enPath="/en/gallery"
+  jsonLd={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": "Photo Gallery — Stani i Hoxhës",
+    "description": "A collection of photographs from Stani i Hoxhës and the Novoseja highlands, Kukës.",
+    "url": "https://stanihoxhes.com/en/gallery/",
+    "author": { "@type": "Organization", "name": "Stani i Hoxhës", "url": "https://stanihoxhes.com" }
+  })}
 >
   <Nav t={t.nav} lang={lang} />
 

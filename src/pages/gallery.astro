@@ -62,10 +62,18 @@ const total = photos.length;
 
 <Base
   lang={lang}
-  title="Galeria — Stani i Hoxhës"
-  description="Galeria e plotë e fotografive nga Stani i Hoxhës dhe malet e Novosejës, Kukës."
+  title="Galeria e Fotografive — Malet e Novosejës | Stani i Hoxhës"
+  description="Shiko koleksionin e plotë të fotografive nga Stani i Hoxhës — pyje mali, kabina prej druri, peizazhe të Novosejës dhe mikpritje tradicionale shqiptare."
   sqPath="/gallery"
   enPath="/en/gallery"
+  jsonLd={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": "Galeria e Fotografive — Stani i Hoxhës",
+    "description": "Koleksion fotografish nga Stani i Hoxhës dhe malet e Novosejës, Kukës.",
+    "url": "https://stanihoxhes.com/gallery/",
+    "author": { "@type": "Organization", "name": "Stani i Hoxhës", "url": "https://stanihoxhes.com" }
+  })}
 >
   <Nav t={t.nav} lang={lang} />
 
